@@ -1,0 +1,272 @@
+html {
+	font-size: 62.5%;
+}
+body {
+	max-width: 1200px;
+	margin: 5px auto;
+}
+header {
+	min-height: 50px;
+	background-color: grey;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+main {
+	min-height: 400px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+}
+.bsbb {
+    box-sizing: border-box;
+}
+#block {
+    width: 100%;
+}
+.headerEntry {
+    min-height: 50px;
+    background-color: grey;
+    display: flex;
+    flex flex-direction: row;
+    justify-content: space-between;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.headerEntry .title {
+    align-self: center;
+    font-size: 2.4rem;
+}
+.headerEntry a {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.arrowleft {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 50px;
+    margin-left: 10px;
+}
+#notifications {
+    align-self: center;
+    max-height: 40px;
+}
+.mainPart {
+	width: 33.33%;
+}
+.site-container {
+	overflow: hidden;
+}
+.site-pusher, .site-container {
+    height: 100%;
+}
+.site-pusher {
+    transform: translateX(-33%);
+    transition-duration: 0.3s;
+    width: 300%;
+}
+.site-content {
+    align-content: flex-start;
+    bottom: 0;
+    justify-content: center;
+    left: 0;
+    padding-top: 2rem;
+    right: 0;
+    top: 0;
+}
+.right__header__icon {
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 50px;
+    position: relative;
+    width: 50px;
+}
+.left__header__icon {
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 50px;
+    position: relative;
+    width: 50px;
+}
+#menu__header__icon::after {
+    box-shadow: 0 4px 0 2px black, 0 13px 0 2px black, 0 22px 0 2px black;
+    content: "";
+    display: block;
+    height: 0;
+    left: 15px;
+    position: absolute;
+    top: 16px;
+    width: 2rem;
+}
+#left__arrow__icon::after {
+	content :">";
+	font-size: 24px;
+	font-weight: 700;
+    display: block;
+    height: 50px;
+    left: 15px;
+    position: absolute;
+    top: 16px;
+    width: 2rem;
+}
+#notif__header__icon::after {
+	content :"||";
+	font-size: 24px;
+	font-weight: 700;
+    display: block;
+    height: 50px;
+    left: 15px;
+    position: absolute;
+    top: 16px;
+    width: 2rem;
+}
+#right__arrow__icon::after {
+	content: "<";
+	font-size: 24px;
+	font-weight: 700;
+    display: block;
+    height: 50px;
+    left: 15px;
+    position: absolute;
+    top: 16px;
+    width: 2rem;
+}
+.with--sidebar--left .site-pusher {
+    transform: translateX(0%);
+}
+.with--sidebar--right .site-pusher {
+    transform: translateX(-66.66%);
+}
+/*****************************/
+/* Bloc info *****************/
+/*****************************/
+.corpus {
+    font-size: 1.3rem;
+    border: 1px solid #000;
+    background-color: #fff;
+    width: 300px;
+    height: 252px;
+    margin: 10px 5px 20px 5px;
+}
+.corpusImage {
+    width: 100%;
+    height: 150px;
+}
+.corpusImage img {
+    max-width: 80%;
+}
+.corpusCartouche {
+    height: 100px;
+    color: #fff;
+    background-color: #000;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.corpusTitle {
+    font-size: 1.8rem;
+}
+#corpusItemBlogpresent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid #000;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+#corpusItemHeader {
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+.interTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+#corpusItemHeader p {
+    font-size: 1.3rem;
+    text-align: center;    
+}
+#corpusItemTitre {
+    padding: 10px;
+    width: 45%;
+    border: 1px solid #000;
+    margin-top: 20px;
+    font-size: 3.2rem;
+    text-align: right;
+}
+#corpusItemEbooks {
+    padding: 10px;
+    width: 45%;
+     margin-top: 20px;   
+}
+#corpusItemText {
+    padding: 10px 0 10px 0;
+    width: 45%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: justify;
+    font-size: 1.3rem;
+}
+#corpusItemText h2 {
+    font-size: 2.4rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#corpusItemDomaine {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#corpusItemDomaine a {
+    text-decoration: none;
+}
+.corpusItemDiscipline {
+    width: 220px;
+    border: 1px solid #000;
+    height: 250px;
+    margin-bottom: 10px;
+}
+.corpusItemAbbr {
+    height: 150px;
+    font-size: 7rem;
+    padding: 70px 0 0 5px;
+    color: #000;
+}
+.corpusItemDevelop {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 2rem;
+    height: 100px;
+}
+/*****************************/
+/* Category ******************/
+/*****************************/
+#blogpresent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}

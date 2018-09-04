@@ -1,0 +1,21 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {% for post in posts %}
+        {{parent()}} - {{post.title}}
+    {% endfor %}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageText">
+            {% for post in posts %}
+                <h1>{{post.title}}</h1>
+                {{post.content}}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

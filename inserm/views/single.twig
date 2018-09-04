@@ -1,0 +1,20 @@
+{% extends 'category.twig' %}
+{% block title %}
+    {{parent()}} - {{single.title}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageText">
+            <h1>{{single.title}}</h1>
+            {% if category.nicename == "actus" %}
+                <div class="date">{{single.date}}</div>
+            {% endif %}
+            {{single.content}}
+        </div>
+    </div>
+{% endblock %}

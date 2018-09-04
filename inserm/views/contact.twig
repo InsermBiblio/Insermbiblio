@@ -1,0 +1,18 @@
+{% extends 'category.twig' %}
+{% block breadcrumb %}
+    <div id="breadcrumbs">
+        <a href="{{site.url}}"> {{ __('Home', 'generique')}}</a> > Contact
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="pagecontent">
+        <div id="pagetext">
+            <div id="singlepresent" class="bsbb">
+                {% for post in posts %}
+                    <h1>{{post.title}}</h1>
+                    {{post.content}}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

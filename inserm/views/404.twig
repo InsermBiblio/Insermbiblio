@@ -1,0 +1,17 @@
+{% extends 'category.twig' %}
+{% block breadcrumb %}
+    <div id="breadcrumbs">
+        <a href="{{site.url}}"> {{ __('Home', 'generique')}}</a> > 404
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="pagecontent">
+        <div id="pagecontent">
+            <div id="pagetext">
+                <div id="singlepresent" class="bsbb">
+                    <h1>404 - {{__( 'Not found', 'generique')}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

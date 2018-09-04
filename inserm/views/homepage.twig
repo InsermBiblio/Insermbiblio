@@ -1,0 +1,138 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {{parent()}} - Accueil
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" media="all" href="{{theme.uri}}/ebsco.css" type="text/css">
+    {{parent()}}
+{% endblock %}
+{% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{theme.uri}}/js/FormProcessing.js"></script>
+{% endblock %}
+{% block content %}
+<div id="homeContent">
+    {% for warning in alerte %}
+        <div class="alerte">{{warning.content}}</div>
+    {% endfor %}
+    <div id="homeTop">
+        <div class="leftBox">
+            <img src="{{theme.uri}}/images/tetiaire_verte.png" alt="décoration" class="tetiaireBoite">
+            <div class="boxTitle">
+                Votre portail
+            </div>
+            <div class="portailTitle">
+                <img src="{{theme.uri}}/images/picto_information.png" alt="">
+                {{infoSite.title}}
+            </div>
+            <ul>
+            {% for item in infoSite.posts %}
+                    <li>
+                        <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                        <a href="{{site.url}}/{{item.slug}}">{{item.post_title}}</a>
+                    </li>
+            {% endfor %}
+                <span class="fleche">
+                    <a href="{{url.site}}/category/{{infoSite.slug}}"></a>
+                </span>
+            </ul>          
+            <div class="portailTitle">{{etAussi.title}}</div>
+            <ul>
+            {% for item in etAussi.posts %}
+                    <li>
+                        <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                        <a href="{{site.url}}/{{item.slug}}">{{item.post_title}}</a>
+                    </li>
+            {% endfor %}
+                <span class="fleche">
+                    <a href="{{site.url}}/category/{{etAussi.slug}}"></a>
+                </span>
+            </ul>          
+        </div>
+        <div class="center">
+            <div class="title">
+               Ressources électroniques en accès réservé            
+            </div>
+            {{ include('ebsco.twig') }}
+            <div id="baseTop">
+                {% for base in basesAccueil %}
+                    <div class="dbHome">
+                        <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
+                            <div class="visuel">
+                                <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >
+                            </div>
+                            <div class="dbTitle">
+                                <img src="{{base.thumbnail.src}}" class="dbHomeLogo" >
+                                <div class="dbName">
+                                    {{base.title}}
+                                </div>                            
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="rightSidebar">
+            {% for item in services %}
+            <div class="rightBox">
+                <img src="{{theme.uri}}/images/tetiaire_blanche.png" alt="">
+                <div class="boxTitle">
+                    {{item.post_title}}
+                </div>
+                <div class="boxText">
+                    <a href="{{item.service_link}}" target="_blank" data-title="{{item.post_content}}">
+                        {{item.service_link_text}}                        
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="homeBottom">
+        <div class="leftBox">
+            <img src="{{theme.uri}}/images/tetiaire_bleue.png" alt="decoration" class="tetiaireBoite">
+            <div class="boxTitle">
+                Actualités
+            </div>
+            <ul>
+                {% for post in news %}
+                    <li>
+                        <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                        <a href="{{site.url}}/{{post.slug}}">{{post.post_title}} <span class="italic">({{post.post_date|date("d-m-Y")}})</span></a>
+                    </li>
+                {% endfor %}
+                <span class="fleche">
+                    <a href="{{site.url}}/category/actus"></a>
+                </span>
+            </ul>
+        </div>
+        <div class="centerRight">
+            <div class="title">
+               Littératures en libre accès            
+            </div>
+            <div id="openAccess">
+                {% for link in openAccess %}
+                    <div class="oa_links{{link.nbcol}} linksborder">
+                        <div class="oa_title">                     
+                            {{link.title}}
+                        </div>
+                        <ul class="col{{link.nbcol}}">
+                            {% for item in link.posts %}
+                                <li class="link">
+                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                                    <a href="{{item.link_url}}" target="blank">
+                                        {{item.name}}                          
+                                    </a>
+                                    <div class="linkText">
+                                        {{item.content}}                                        
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

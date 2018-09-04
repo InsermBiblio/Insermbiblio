@@ -1,0 +1,24 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {{parent()}} > {{__('Search', 'generique')}}
+{% endblock %}
+{% block breadcrumb %}
+    <div id="breadcrumbs">
+        <a href="{{site.url}}"> {{ __('Home', 'generique')}}</a> > > {{__('Search', 'generique')}}
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="pagecontent">
+        <div id="pagetext">
+                <div id="searchpresent" class="bsbb">
+                    <h1> {{__('Your search', 'generique')}} : {{title}}</h1>
+                    <ul>
+                        {% for post in posts %}
+                            <li><a href="{{site.url}}/{{post.slug}}">{{post.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+               </div>
+           </div>
+        </div>
+    </div>
+{% endblock %}

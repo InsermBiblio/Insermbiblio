@@ -1,0 +1,49 @@
+{% extends 'page-layout.twig' %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageText">
+            <h1>{{basesThematiques.title}}</h1>
+        </div>
+        <div id="dbRender">
+            {% for base in basesThematiques.posts %}
+                <div class="dbEach">
+                    <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
+                        <div class="visuel">
+                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbPageDeco" >                           
+                        </div>
+                        <div class="dbTitle">
+                            <img src="{{base.thumbnail.src}}" class="dbPageLogo">
+                            <div class="dbName">
+                                {{base.title}}
+                            </div>                            
+                        </div>
+                    </a>                    
+                </div>
+            {% endfor %}
+        </div>
+        <div id="pageText">
+            <h1>{{ebooksWiley.title}}</h1>
+        </div>
+        <div id="dbRender">
+            {% for base in ebooksWiley.posts %}
+                <div class="dbEach">
+                    <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
+                        <div class="visuel">                         
+                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbPageDeco" >
+                        </div>
+                        <div class="dbTitle">
+                            <img src="{{base.thumbnail.src}}" class="dbPageLogo">                            
+                            <div class="dbName">
+                                {{base.title}}
+                            </div>                            
+                        </div>
+                    </a>                    
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

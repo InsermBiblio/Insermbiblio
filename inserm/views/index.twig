@@ -1,0 +1,33 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {{parent()}} - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="homepagecontent">
+        <div id="pagetext">
+            <div id="blogpresent" class="bsbb">
+                {% for post in posts %}
+                    <div id="newsbox" class="bsbb">
+                        <div id="newstitle">
+                            {{post.title}}
+                        </div>
+                        {% if post.thumbnail.src %}
+                            <img src="{{post.thumbnail.src}}"/>
+                            <div id="blogtext1">
+                                <div class="date">{{post.date}}</div>
+                                <div id="newsabstract">{{post.post_content|excerpt(17)}}</div>
+                                <div id="more"><a href="{{site.url}}/{{post.slug}}"> {{ __('More', 'generique')}}</a></div>
+                            </div>
+                        {% else %}
+                            <div id="blogtext2">
+                                <div class="date">{{post.date}}</div>
+                                <div id="newsabstract">{{post.post_content|excerpt(40)}}</div>
+                                <div id="more"><a href="{{site.url}}/{{post.slug}}"> {{ __('More', 'generique')}}</a></div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,164 @@
+{# templates/ebsco.twig #}
+<div id="contenedor">
+    <div id="searchChange">
+        <div class="searchButton">Rechercher :</div>
+        <div id="tag-1" class="changeSort">Un article</div>
+        <div id="tag-2" class="changeSort">Une revue, un ouvrage</div>
+        <div id="tag-3" class="changeSort">
+            <a href="{{site.url}}/bases-de-donnees">
+                Une base de données
+            </a>
+        </div>
+    </div>
+    <div class="content">    
+            <div id="content-1" class="formContent" >
+                <form id="searchformedsid1"  action="{{ezproxy.ebsco}}" method="get" target="_blank" onsubmit="philippePreProcess(this)">
+                    <input name="direct" value="true" type="hidden">
+                    <input name="scope" value="site" type="hidden">
+                    <input name="site" value="eds-live" type="hidden">
+                    <input name="profile" value="eds" type="hidden">
+                    <input name="authtype" value="ip,cookie,uid" type="hidden">
+                    <input name="custid" value="ns253354" type="hidden">
+                    <input name="groupid" value="main" type="hidden">
+                    <input name="bquery" value=""  type="hidden">
+                    <div class="ligne">
+                        <select onchange="#" size="1" name="search_prefix" class="formeds2" title="Sélectionnez un champ (facultatif)">
+                            <option selected="selected" value="">Tout</option>
+                            <option value="TX ">Tout le texte</option>
+                            <option value="AU ">Auteur</option>
+                            <option value="TI ">Titre</option>
+                            <option value="SU ">Mots clés</option>
+                            <option value="SO ">Titre revue</option>
+                            <option value="AB ">Résumé</option>
+                            <option value="IS ">ISSN</option>
+                            <option value="IB ">ISBN</option>
+                            <option value="PMID ">PUBMED ID</option>
+                        </select><!-- collage
+                     --><div class="searchInputReset">                           
+                            <input id="searchboxedsid" name="uquery" size="52%" placeholder="Saisissez des mots …" type="text"  autocomplete="off" onkeyup="autocomp_eds(event)">
+                            <button type="button" id="SearchTerm1-clear" onclick="philippeClearLine1(this)" title="Effacez" tabindex="0" aria-hidden="false" aria-describedby="descClearButton" class="clear-button" data-auto="text_clear_button">x</button>
+                        </div><!-- collage
+                     --><input value="Rechercher" class="formeds3" type="submit" title="Rechercher">
+                         <div class ="Plus" onclick="philippeShowSecondLine(this)"></div>
+                        <!--
+                        <a id="helpLink" href="javascript:window.open('http://support.ebsco.com/help/?int=eds&amp;lang=fr&amp;feature_id=Basic&amp;TOC_ID=Always&amp;SI=0&amp;BU=0&amp;GU=1&amp;PS=0&amp;ver=&amp;dbs=edsrec,edsswe,edsrac,edstdx,edsram,edshld,edsgso,edsjbp,edssci,edspgr,edspap,edsebk,edsijc,edsagr,ers,edsuph,edsupa,edsupp,edsdoj,edsper,edsoap,edsble,edsluc,edsbio,edscog,edsrca,edsorb,edseur,edsinz,edsjsr,edsgal,edsaul,edsstc,edshbo,edstox,edsgtx,edsndl,edseub,edsnor,edschs,edsdeh,edsret,edscdp,edssch,edsccr,edseou,edssmd,edscbp,edsnbu,edsnum,edshsd,edsdnz,edsbzt,edsbhl,edsdlc,edsclk,edsclt,edsnuk,edsnas,edssun,edsloc,edsair,edseli,edslap,edsshm,cat05465a,edsoxf,edsehd,edsemr,bwh,frh,bth,lxh,8gh,edsgpr,edselp,edsoai,edsarx,nlebk,edsman,nsm,asx,edo,edb,edsjst,edsupe,edsupi')" title="Aide sur la recherche">
+                            <img alt="Sélectionnez un champ (facultatif)" src="http://if.ebsco-content.com/interfacefiles/17.2.0.260/eds/iconQuestionMarkGeneric.png">
+                        </a>
+                    -->
+                    </div>
+                    <div id="ligne2">
+                        <select id="targetselectboxedsid2" size="1" name="search_prefix_2" class="formeds2" style="display:none;" title="Sélectionnez un champ (facultatif)">
+                            <option selected="selected" value="">Tout</option>
+                            <option value="TX ">Tout le texte</option>
+                            <option value="AU ">Auteur</option>
+                            <option value="TI ">Titre</option>
+                            <option value="SU ">Mots clés</option>
+                            <option value="SO ">Titre revue</option>
+                            <option value="AB ">Résumé</option>
+                            <option value="IS ">ISSN</option>
+                            <option value="IB ">ISBN</option>
+                            <option value="PMID ">PUBMED ID</option>                
+                        </select><!-- collage
+                     --><div class="searchInputReset">                           
+                            <input id="searchboxedsid2" name="uquery_2" size="57%" placeholder="Saisissez des mots …" type="text" style="display:none;">
+                            <button type="button" id="SearchTerm2-clear" onclick="philippeClearLine2(this)" title="Effacez" tabindex="0" aria-hidden="false" aria-describedby="descClearButton" class="clear-button" data-auto="text_clear_button"  class="clear-button" style="display:none">x</button>
+                        </div><!-- collage
+                     --><select id="boolselectboxedsid2" size="1" name="search_bool_2" class="formeds2" style="display:none;" title="Opérateur Booléen">
+                            <option selected="selected" value="AND">ET</option>
+                            <option value="OR">OU</option>
+                            <option value="NOT">SAUF</option>
+                        </select>
+                        <div class ="Plus2" id="plus-button-id2" onclick="philippeShowThirdLine(this)"></div>
+                        <div class ="Minus2" id="minus-button-id2" onclick="philippeHideSecondLine(this)"></div>
+                    </div>
+                    <div id="ligne3">
+                        <select id="targetselectboxedsid3" size="1" name="search_prefix_3" class="formeds2" style="display:none;" title="Sélectionnez un champ (facultatif)">
+                            <option selected="selected" value="">Tout</option>
+                            <option value="TX ">Tout le texte</option>
+                            <option value="AU ">Auteur</option>
+                            <option value="TI ">Titre</option>
+                            <option value="SU ">Mots clés</option>
+                            <option value="SO ">Titre revue</option>
+                            <option value="AB ">Résumé</option>
+                            <option value="IS ">ISSN</option>
+                            <option value="IB ">ISBN</option>
+                            <option value="PMID ">PUBMED ID</option>
+                        </select><!-- collage
+                     --><div class="searchInputReset">                           
+                            <input id="searchboxedsid3" name="uquery_3" size="57%" placeholder="Saisissez des mots …" type="text" style="display:none;" >
+                            <button type="button" id="SearchTerm3-clear" onclick="philippeClearLine3(this)" title="Effacez" tabindex="0" aria-hidden="false" aria-describedby="descClearButton" class="clear-button" data-auto="text_clear_button" style="display:none">x</button>
+                        </div><!-- collage
+                     --><select id="boolselectboxedsid3"  size="1" name="search_bool_3" class="formeds2" style="display:none;" title="Opérateur Booléen">
+                            <option selected="selected" value="AND">ET</option>
+                            <option value="OR">OU</option>
+                            <option value="NOT">SAUF</option>
+                        </select>                  
+                        <div class ="Minus" id="minus-button-id3" onclick="philippeHideThirdLine(this)"></div>
+                    </div>
+                    <div id="edsSearchWrapper" class="content-1">              
+                    </div>
+                </form>
+            </div>
+            <div id="content-2" class="formContent">
+                <form id="searchformholdingsid" action="{{ezproxy.ebsco}}" method="get" target="_blank" onsubmit="ebscoPreProcess(this)">
+                    <input name="search_prefix" value="" type="hidden">
+                    <input name="direct" value="true" type="hidden">
+                    <input name="scope" value="site" type="hidden">
+                    <input name="type" value="44" type="hidden">
+                    <input name="db" value="edspub" type="hidden">
+                    <input name="site" value="eds-live" type="hidden">
+                    <input name="profile" value="eds" type="hidden">
+                    <input name="authtype" value="ip,cookie,uid" type="hidden">
+                    <input name="custid" value="ns253354" type="hidden">
+                    <input name="groupid" value="main" type="hidden">
+                    <input name="bquery" value=""  type="hidden">
+                    <input id="searchboxholdingsid" name="uquery" size="55" placeholder="Entrez un titre de revue…" type="text" autocomplete="off" onkeyup="autocomp(event)">&nbsp;
+                    <input value="Rechercher" class="formeds3" type="submit">
+                    <span id="DT1_FT" style="display:none">
+                    </span>
+                </form>
+                <br/>
+
+                <div id="character">
+                    <a href="{{ezproxy.ebsco}}?direct=true&site=eds-live&scope=site&type=44&db=edspub&custid=ns253354&groupid=main&profid=pfi&mode=and&authtype=ip,cookie,uid&bquery=JN 0* OR JN 1* OR JN 2* OR JN 3* OR JN 4* OR JN 5* OR JN 6* OR JN 7* OR JN 8* OR JN 9**" target="_blank">
+                        0-9
+                    </a>
+                    {% for letter in 'a'|upper..'z'|upper %}
+                        <a href="{{ezproxy.ebsco}}?direct=true&site=eds-live&scope=site&type=44&db=edspub&custid=ns253354&groupid=main&profid=pfi&mode=and&authtype=ip,cookie,uid&bquery=JN+{{letter}}*" target="_blank">
+                            {{letter}}
+                        </a>
+                    {% endfor %}
+                    <a href="{{ezproxy.ebsco}}?direct=true&site=eds-live&scope=site&type=44&db=edspub&custid=ns253354&groupid=main&profid=pfi&mode=and&authtype=ip,cookie,uid&bquery=JN * NOT JN 0* NOT JN 1* NOT JN 2* NOT JN 3* NOT JN 4* NOT JN 5* NOT JN 6* NOT JN 7* NOT JN 8* NOT JN 9* NOT JN A* NOT JN B* NOT JN C* NOT JN D* NOT JN E* NOT JN F* NOT JN G* NOT JN H* NOT JN I* NOT JN J* NOT JN K* NOT JN L* NOT JN M* NOT JN N* NOT JN O* NOT JN P* NOT JN Q* NOT JN R* NOT JN S* NOT JN T* NOT JN U* NOT JN V* NOT JN W* NOT JN X* NOT JN Y* NOT JN Z*" target="_blank">
+                        Autres
+                    </a>
+                </div>    
+                <div id="holdingsSearchWrapper" class="content-2">
+                </div>
+            </div>
+            <!--
+            <div id="content-3" class="formContent">
+                <form action="http://search.ebscohost.com/login.aspx" method="get" target="_blank" onsubmit="ebscoPreProcess(this);limittoBooks(this)">
+                    <select onchange="#" size="1" name="search_prefix" class="formeds2">
+                        <option selected="selected" value="">Mot-clés&nbsp;&nbsp;</option>
+                        <option value="TI ">Titre</option>
+                        <option value="AU ">Auteur</option>
+                        <option value="IB ">ISBN</option>
+                    </select>
+                    <input name="direct" value="true" type="hidden">
+                    <input name="scope" value="site" type="hidden">
+                    <input name="site" value="eds-live" type="hidden">
+                    <input name="profile" value="eds" type="hidden">
+                    <input name="authtype" value="ip,cookie,uid" type="hidden">
+                    <input name="custid" value="ns253354" type="hidden">
+                    <input name="groupid" value="main" type="hidden">
+                    <input name="bquery" value="" type="hidden">
+                    <input name="uquery" size="52%" placeholder=" Recherche tout terme" type="text">
+                    <input value="Rechercher" class="formeds3" type="submit"><br><br>
+                </form>
+            </div>
+        -->
+    </div>
+</div>
+<script src="{{theme.uri}}/js/ebsco.js"></script> 
+<script src="{{theme.uri}}/js/autocomp_eds.js"></script> 
+<script src="{{theme.uri}}/js/autocomp_holdings.js"></script>

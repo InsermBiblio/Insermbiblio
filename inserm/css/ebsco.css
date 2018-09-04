@@ -1,0 +1,90 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+   /*AUTOCOMPLETE STYLES*/
+ #auto-results_eds {
+       border: 1px black solid;
+       /*font-family: Helvetica,Arial,sans-serif;*/
+       background-color:white;
+       position:absolute;
+       padding:5px;
+       margin-top:33px;
+       z-index:10;
+   }
+   .slide
+   {
+     overflow:visible;
+   }
+   #auto-results_eds li:hover {
+       background-color: #3875D7;
+       color: white;
+       font-weight:bold;
+       cursor: pointer;
+   }
+   .result.selectedtermeds {
+       background-color: #3875D7;
+       color: white;
+       font-weight:bold;
+       cursor: pointer;
+   }
+   #auto-results_eds li {
+       border: medium none;
+       list-style: outside none none;
+       padding-left: 5px;
+   }
+   #auto-results {
+       border: 1px black solid;
+       /*font-family: Helvetica,Arial,sans-serif;*/
+       background-color:white;
+       position:absolute;
+       padding:5px;
+       margin-top:33px;
+z-index:10;
+   }
+   .slide
+   {
+     overflow:visible;
+   }
+   #auto-results li:hover {
+       background-color: #3875D7;
+       color: white;
+       font-weight:bold;
+       cursor: pointer;
+   }
+   .result.selectedterm {
+       background-color: #3875D7;
+       color: white;
+       font-weight:bold;
+       cursor: pointer;
+   }
+   #auto-results li {
+       border: medium none;
+       list-style: outside none none;
+       padding-left: 5px;
+   }
+   /*END AUTOCOMPLETE STYLES*/
+   #searchformholdingsid {
+       margin-bottom: 1em;
+   }
