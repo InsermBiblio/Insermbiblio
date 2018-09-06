@@ -13,7 +13,6 @@ foreach($linkCategoriesFooter as $slug){
 }
 $context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
 
-
 $category = get_the_category();
 $nicename = $category[0]->category_nicename;
 $name = $category[0]->name;
