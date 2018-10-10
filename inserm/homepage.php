@@ -11,12 +11,12 @@ $context['alerte']=Timber::get_posts(['category_name' => 'alerte', 'numberposts'
 $context['infoSite'] = [
 		'title' => get_category_by_slug('infossite')->name,
 		'slug' => 'infossite',
-		'posts' => Timber::get_posts(['category_name' => infossite, 'showposts' => 4])
+		'posts' => Timber::get_posts(['category_name' => 'infossite', 'showposts' => 4])
 ];
 $context['etAussi'] = [
 		'title' => get_category_by_slug('etaussi')->name,
 		'slug' => 'etaussi',
-		'posts' => Timber::get_posts(['category_name' => etaussi, 'showposts' => 4])
+		'posts' => Timber::get_posts(['category_name' => 'etaussi', 'showposts' => 4])
 ];
 
 $linkCategoriesFooter = get_categories(array('taxonomy' => 'link_category', 'orderby' => 'term_id', 'include' => '2,3,4,5'));
@@ -53,7 +53,7 @@ foreach ($openAccess as $link) {
 }
 
 
-$context['basesAccueil'] = Timber::get_posts(['category_name' => bases_accueil, 'showposts' => 3]);
+$context['basesAccueil'] = Timber::get_posts(['category_name' => 'bases_accueil', 'showposts' => 3]);
 
 Timber::render('homepage.twig', $context);
 //print_r($context['useLinks']);
