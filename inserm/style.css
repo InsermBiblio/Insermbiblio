@@ -295,6 +295,15 @@ header .bandeau {
 .oa_links2 {
     width: calc((100% - 50px)/2.5);
     padding-left: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.oa_links2 .oa_title {
+    width: 100%;
+}
+.oa_links2 ul {
+    width: 50%;
 }
 .oa_links1 {
     width: calc((100% + 50px)/5);
@@ -310,11 +319,10 @@ header .bandeau {
     margin-bottom: 0;
  }
  .link:hover .linkText {
-    display: inline-block;
+    display: block;
     position: absolute;
     top: 5px;
-    left:20px;
-    opacity:1;
+    left:50px;
     width: 280px;
     z-index: 1000;
     color: #000;

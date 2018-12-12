@@ -51,7 +51,7 @@ function getResults(term){
     $.ajax({
         type:"GET",
         //url: "autocomp.php",
-        url: "http://gss.ebscohost.com/pmarguier/client/ns253354_BIBLIOINSERM/autocomp_holdings.php",
+        url: "//widgets.ebscohost.com/prod/customerspecific/ns253354/autocomp_holdings.php",
         data: { q: term},
         dataType: 'json'
         }).done(function( data ) {
@@ -74,6 +74,8 @@ function getResults(term){
                         $('#auto-results').append('<li class="result" onclick="updateSearch(&quot;'+this['term']+'&quot;)">'+this['term']+'</li>');
                     });
                     $("#auto-results").css("display","block");
+					$("#auto-results").css("margin-top","33px");
+					$("#auto-results").css("z-index","10");
 					$(".slide").css("overflow","visible"); 
                 }    
             }

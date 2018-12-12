@@ -116,7 +116,14 @@
                         <div class="oa_title">                     
                             {{link.title}}
                         </div>
-                        <ul class="col{{link.nbcol}}">
+                        {% set foo = "" %}
+                        {% for item in link.posts %}
+                            {% if loop.length < 9  %}
+                                {% set foo = 'inf' %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if foo == 'inf' %}
+                        <ul class="col1">
                             {% for item in link.posts %}
                                 <li class="link">
                                     <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
@@ -129,6 +136,38 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        {% else %}
+                        <ul class="col1">
+                            {% for item in link.posts %}
+                                {% if loop.index < 9 %}
+                                <li class="link">
+                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                                    <a href="{{item.link_url}}" target="blank">
+                                        {{item.name}}                          
+                                    </a>
+                                    <div class="linkText">
+                                        {{item.content}}                                        
+                                    </div>
+                                </li>                                
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <ul class="col1">
+                            {% for item in link.posts %}
+                                {% if loop.index > 8 %}
+                                <li class="link">
+                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                                    <a href="{{item.link_url}}" target="blank">
+                                        {{item.name}}                          
+                                    </a>
+                                    <div class="linkText">
+                                        {{item.content}}                                        
+                                    </div>
+                                </li>                                
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
