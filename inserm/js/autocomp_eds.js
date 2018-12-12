@@ -52,7 +52,7 @@ function getResults_eds(term){
     $.ajax({
         type:"GET",
         //url: "autocomp_eds.php",
-        url: "http://gss.ebscohost.com/pmarguier/client/ns253354_BIBLIOINSERM/autocomp_eds.php",
+        url: "//widgets.ebscohost.com/prod/customerspecific/ns253354/autocomp_eds.php",
         data: { q: term},
         dataType: 'json'
         }).done(function( data ) {
@@ -75,6 +75,8 @@ function getResults_eds(term){
                         $('#auto-results_eds').append('<li class="result" onclick="updateSearch_eds(&quot;'+this['term']+'&quot;)">'+this['term']+'</li>');
                     });
                     $("#auto-results_eds").css("display","block");
+                    $("#auto-results_eds").css("margin-top","33px");
+                    $("#auto-results_eds").css("z-index","10");
                     $(".slide").css("overflow","visible"); 
                 }   
             }
@@ -95,6 +97,8 @@ function updateSearch_eds(term){
     }
     if (searchOnClickeds === false) {autocomp_eds(event);}
 }
+
+
 $('body').click(function(e){
        if( e.target.id == 'auto-results_eds' )
           { return true; }
