@@ -1,31 +1,41 @@
 <?php
 $context = Timber::get_context();
 
-$linkCategoriesFooter = get_categories(array('taxonomy' => 'link_category', 'orderby' => 'term_id', 'include' => '2,3,4,5'));
-foreach($linkCategoriesFooter as $slug){
-	$slugs =(array)$slug;
-	$context['linksFooter'][] = [
-		'name' => $slugs['name'],
-		'slug' => $slugs['slug'],
-		'nbcol' => (int)($slugs['count']/5+1),
-		'bookmarks' => get_bookmarks(array('category_name' => $slugs['name']))
+$context['services'] = Timber::get_posts(['category_name' => 'services']);
+$context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
+$parentLinkID = get_cat_ID('liens utiles');
+$useLinks = get_categories( array('child_of' => $parentLinkID, 'orderby' => 'term_id', 'order' => 'ASC',) );
+foreach ($useLinks as $link) {
+	$links=(array)$link;
+	$context['useLinks'][] = [
+		'title' => $links['name'],
+		'nbcol' => (int)($links['count']/7+1),
+		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
 	];
 }
-$context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
-
 
 $category = get_the_category();
 $nicename = $category[0]->category_nicename;
 $name = $category[0]->name;
+$parent = $category[0]->parent;
+$parentThematiques = get_cat_ID('sites thematiques');
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
-$context['post'] = Timber::get_posts();
-if (substr($category[0]->category_nicename,0,3)=='faq'){
-    Timber::render('faq.twig', $context);
+if ($parent == $parentThematiques ) {
+	$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'term_id', 'order' => 'DESC') );
+	foreach ($sitesThematiques as $link) {
+		$links=(array)$link;
+		$context['sitesThematiques'][] = [
+			'title' => $links['name'],
+			'slug' => $links['slug']
+		];
+	}
+    Timber::render('sites-thematiques.twig', $context);
 }
-else if (substr($category[0]->category_nicename,0,4)=='aide'){
-    Timber::render('help.twig', $context);
+elseif ($nicename == "outils-gestion") {
+	Timber::render('outils.twig', $context);
 }
 else {
     Timber::render('category.twig', $context);
 }
-// print_r($context);
+//print_r($context);
+

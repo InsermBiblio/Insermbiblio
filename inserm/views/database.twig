@@ -11,10 +11,10 @@
         </div>
         <div id="dbRender">
             {% for base in basesThematiques.posts %}
-                <div class="dbEach">
+                <div class="dbHome">
                     <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
                         <div class="visuel">
-                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbPageDeco" >                           
+                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >                           
                         </div>
                         <div class="dbTitle">
                             <img src="{{base.thumbnail.src}}" class="dbPageLogo">
@@ -31,10 +31,10 @@
         </div>
         <div id="dbRender">
             {% for base in ebooksWiley.posts %}
-                <div class="dbEach">
+                <div class="dbHome">
                     <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
                         <div class="visuel">                         
-                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbPageDeco" >
+                            <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >
                         </div>
                         <div class="dbTitle">
                             <img src="{{base.thumbnail.src}}" class="dbPageLogo">                            

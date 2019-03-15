@@ -1,0 +1,51 @@
+{% extends 'page-layout.twig' %}
+{% block javascript %}
+    <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="{{theme.uri}}/js/flip.js"></script>
+{% endblock %}
+{% block title %}
+    {{parent()}} - Sites Thématiques - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pagetext">
+            <h1>Sites thématiques : {{category.name}}</h1>
+            <div id="pageSites">
+                <ul id="menuSites">
+                    {% for item in sitesThematiques %}
+                        {% if item.title == category.name  %}
+                            <li>
+                                <a href="{{site.url}}/category/{{item.slug}}" class="active">{{item.title}}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{site.url}}/category/{{item.slug}}">{{item.title}}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}                    
+                </ul>
+                <div id="columnSite">
+                {% for post in posts %}
+                    <div class="siteThematique">
+                        <div class="siteHeader">                                              
+                                <img src="{{ TimberImage(post.logo).src }}" alt="" class="siteLogo">
+                            <h2>
+                                <a href="{{post.url_acces}}" target="_blank">{{post.title}}</a>
+                            </h2>
+                                <div id="arrow-{{post.id}}" class="changeText moreText"></div>                    
+                        </div>
+                        <div class="noshow" id="text-{{post.id}}">
+                            {{post.post_content}}
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

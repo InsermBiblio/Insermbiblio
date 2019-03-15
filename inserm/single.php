@@ -13,7 +13,19 @@ foreach($linkCategoriesFooter as $slug){
 		'bookmarks' => get_bookmarks(array('category_name' => $slugs['name']))
 	];
 }
+$parentLinkID = get_cat_ID('liens utiles');
+$useLinks = get_categories( array('child_of' => $parentLinkID, 'orderby' => 'term_id', 'order' => 'ASC',) );
+foreach ($useLinks as $link) {
+	$links=(array)$link;
+	$context['useLinks'][] = [
+		'title' => $links['name'],
+		'nbcol' => (int)($links['count']/7+1),
+		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
+	];
+}
+
 $context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
 $context['single'] = new TimberPost();
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
+$context['services'] = Timber::get_posts(['category_name' => 'services']);
 Timber::render('single.twig', $context);
