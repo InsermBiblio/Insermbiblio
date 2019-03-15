@@ -49,11 +49,11 @@ Add widgets
 *********************************************************************************************/
 function my_widgets_init() {
 register_sidebar(array(
-        'name' => 'Barre footer',
-        'id' => 'footer_sidebar',
-		'before_widget' => '<div class="footer_widget" id="%1$s">',
+        'name' => 'Home sidebar',
+        'id' => 'home_sidebar',
+		'before_widget' => '<div class="rightBox" id="%1$s">',
         'after_widget' => '</div>',
-        'before_title' => '<div class="footer_title">',
+        'before_title' => '<div class="boxTitle">',
         'after_title' => '</div>',
       ));
 }

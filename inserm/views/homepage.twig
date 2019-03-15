@@ -15,39 +15,37 @@
     {% for warning in alerte %}
         <div class="alerte">{{warning.content}}</div>
     {% endfor %}
-    <div id="homeTop">
-        <div class="leftBox">
+        <div class="leftBoxTop">
             <img src="{{theme.uri}}/images/tetiaire_verte.png" alt="décoration" class="tetiaireBoite">
             <div class="boxTitle">
-                Votre portail
+                {{votrePortail.title}}
             </div>
             <div class="portailTitle">
-                <img src="{{theme.uri}}/images/picto_information.png" alt="">
-                {{infoSite.title}}
             </div>
-            <ul>
-            {% for item in infoSite.posts %}
+            <ul class="leftBox">
+            {% for item in votrePortail.posts %}
+                <li>
+                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
+                    <a href="{{site.url}}/{{item.slug}}">{{item.post_title}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% for link in votrePortail.child %}
+                <div class="portailTitle">{{link.name}}</div>
+                <ul class="leftBox">
+                {% for child in link.childposts %}
                     <li>
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
-                        <a href="{{site.url}}/{{item.slug}}">{{item.post_title}}</a>
+                        <a href="{{site.url}}/{{child.slug}}">{{child.post_title}}</a>
                     </li>
+                {% endfor %}
+                </ul>
             {% endfor %}
-                <span class="fleche">
-                    <a href="{{url.site}}/category/{{infoSite.slug}}"></a>
-                </span>
-            </ul>          
-            <div class="portailTitle">{{etAussi.title}}</div>
-            <ul>
-            {% for item in etAussi.posts %}
-                    <li>
-                        <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
-                        <a href="{{site.url}}/{{item.slug}}">{{item.post_title}}</a>
-                    </li>
-            {% endfor %}
-                <span class="fleche">
-                    <a href="{{site.url}}/category/{{etAussi.slug}}"></a>
-                </span>
-            </ul>          
+<!--
+            <span class="fleche">
+                <a href="{{site.url}}/category/{{etAussi.slug}}"></a>
+            </span>
+-->
         </div>
         <div class="center">
             <div class="title">
@@ -73,28 +71,14 @@
             </div>
         </div>
         <div id="rightSidebar">
-            {% for item in services %}
-            <div class="rightBox">
-                <img src="{{theme.uri}}/images/tetiaire_blanche.png" alt="">
-                <div class="boxTitle">
-                    {{item.post_title}}
-                </div>
-                <div class="boxText">
-                    <a href="{{item.service_link}}" target="_blank" data-title="{{item.post_content}}">
-                        {{item.service_link_text}}                        
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
+            {{home_sidebar}}
         </div>
-    </div>
-    <div id="homeBottom">
-        <div class="leftBox">
+        <div class="leftBoxBottom">
             <img src="{{theme.uri}}/images/tetiaire_bleue.png" alt="decoration" class="tetiaireBoite">
             <div class="boxTitle">
                 Actualités
             </div>
-            <ul>
+            <ul class="leftBox">
                 {% for post in news %}
                     <li>
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
@@ -126,7 +110,6 @@
                         <ul class="col1">
                             {% for item in link.posts %}
                                 <li class="link">
-                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
                                     <a href="{{item.link_url}}" target="blank">
                                         {{item.name}}                          
                                     </a>
@@ -141,8 +124,7 @@
                             {% for item in link.posts %}
                                 {% if loop.index < 9 %}
                                 <li class="link">
-                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
-                                    <a href="{{item.link_url}}" target="blank">
+                                   <a href="{{item.link_url}}" target="blank">
                                         {{item.name}}                          
                                     </a>
                                     <div class="linkText">
@@ -156,7 +138,6 @@
                             {% for item in link.posts %}
                                 {% if loop.index > 8 %}
                                 <li class="link">
-                                    <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
                                     <a href="{{item.link_url}}" target="blank">
                                         {{item.name}}                          
                                     </a>
@@ -170,8 +151,22 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+                    <div class="oa_links1 linksborder">
+                        <div class="oa_title">                     
+                            Sites thématiques
+                        </div>
+                        <ul class="col1">
+                         <!-- ATTENTION une seule colonne prevue sinon reprendre code openaccess-->
+                         {% for link in sitesThematiques %}
+                            <li class="link">
+                                <a href="{{site.url}}/category/{{link.slug}}">
+                                    {{link.title}}                          
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
             </div>
         </div>
-    </div>
 </div>
 {% endblock %}

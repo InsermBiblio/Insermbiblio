@@ -17,6 +17,7 @@
         <link rel="stylesheet" media="all" href="{{theme.uri}}/style.css" type="text/css">
     {% endblock %}
     {% block javascript %}
+        <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
     {% endblock %}
     {{wp_head}}
 </head>
@@ -25,16 +26,25 @@
         <img src="{{theme.uri}}/images/bandeau_2018.jpg" alt="decoration" class="bandeau"/>
         <div id="entete">
             <div id="titleLong">
+                <a href="{{site.url}}/la-bibliotheque-numerique-de-linserm/">
                 La bibliothèque numérique <br/>
-                de l'Institut national de la santé et de la recherche médicale
+                de l'Institut national de la santé et de la recherche médicale</a>
             </div>
             <div id="titleSmall">
                 Bibliothèque numérique - Inserm
             </div>
-            <div id="titleLinks">
-                <a href="{{site.url}}/inscription" id="inscription"><span class="showhidden">S'inscrire</span></a>
-                <a href="https://insermbib-test.inist.fr/wp-content/uploads/2018/04/INSERM_DISC_CharteWeb.pdf" target="_blank" id="charte"><span class="showhidden">Charte BiblioInserm</span></a>
-            </div> 
+            <ul id="titleLinks">
+            {% for item in services %}
+                <li class="linkoa">
+                    <a href="{{item.service_link}}" target="_blank" class="showhidden">
+                        {{item.post_title}}
+                    </a>
+                    <div class="linkText">
+                        {{item.post_content}}
+                    </div>                       
+                </li>
+            {% endfor %}
+            </ul>
         </div>
     </header>
     <div class='site-content bsbb'>
@@ -57,7 +67,7 @@
                         {% for link in item.posts %}
                             <li>
                                 <img src="{{theme.uri}}/images/squarewhite.png" alt="" class="squareWhite">
-                                <a href="{{link.link_url}}" target="blank">{{link.name}}</a>
+                                <a href="{{link.url_du_site}}" target="blank">{{link.name}}</a>
                             </li>
                         {% endfor %}
                     </ul>

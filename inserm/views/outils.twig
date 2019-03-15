@@ -1,0 +1,35 @@
+{% extends 'page-layout.twig' %}
+{% block javascript %}
+        <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="{{theme.uri}}/js/outils.js"></script>
+{% endblock %}
+{% block title %}
+    {{parent()}} - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pagetext">
+            <h1>{{category.name}}</h1>
+            <div id="pageOutils">
+                <div id="menuOutils">
+                {% for post in posts %}
+                    <h2 class="titreOutils" id="titre-{{loop.index}}">{{post.title}}</h2>
+                {% endfor %}
+                </div>
+                <div id="textOutils">
+                {% for post in posts %}
+                    <div id="text-{{loop.index}}" class="noshow">
+                        {{post.post_content}}
+
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
