@@ -37,5 +37,4 @@ elseif ($nicename == "outils-gestion") {
 else {
     Timber::render('category.twig', $context);
 }
-//print_r($context);
-
+// print_r($context);
