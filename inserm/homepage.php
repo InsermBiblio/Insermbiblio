@@ -27,7 +27,6 @@ foreach($portalChild as $portal){
 		'childposts' => Timber::get_posts([ 'category_name' => $portals['slug']])
 	];
 }
-//print_r($context['votrePortail']['child']);
 $linkCategoriesFooter = get_categories(array('taxonomy' => 'link_category', 'orderby' => 'term_id', 'include' => '2,3,4,5'));
 foreach($linkCategoriesFooter as $slug){
 	$slugs =(array)$slug;
@@ -71,6 +70,6 @@ foreach ($sitesThematiques as $link) {
 	];
 }
 $context['home_sidebar'] = Timber::get_widgets('home_sidebar');
-$context['basesAccueil'] = Timber::get_posts(['category_name' => bases_accueil, 'showposts' => 3]);
+$context['basesAccueil'] = Timber::get_posts(['category_name' => 'bases_accueil', 'showposts' => 3]);
 //print_r($context['sitesThematiques']);
 Timber::render('homepage.twig', $context);
