@@ -11,10 +11,10 @@
     <script type="text/javascript" src="{{theme.uri}}/js/FormProcessing.js"></script>
 {% endblock %}
 {% block content %}
+{% for warning in alerte %}
+    <div class="alerte">{{warning.title}}<br/>{{warning.content}}</div>
+{% endfor %}
 <div id="homeContent">
-    {% for warning in alerte %}
-        <div class="alerte">{{warning.content}}</div>
-    {% endfor %}
         <div class="leftBoxTop">
             <img src="{{theme.uri}}/images/tetiaire_verte.png" alt="décoration" class="tetiaireBoite">
             <div class="boxTitle">

@@ -2,8 +2,8 @@
 /* DFichier configuration générale */
 $config = [
     'ezproxy' => [
-        'inist' => 'http://gate2.inist.fr/login?url=',
-        'ebsco' => 'http://search.ebscohost.com.gate2.inist.fr/login.aspx',
+        'inist' => 'https://proxy.insermbiblio.inist.fr/login?url=',
+        'https://search-ebscohost-com.proxy.insermbiblio.inist.fr/login.aspx',
     ]
 ];
 
