@@ -24,11 +24,11 @@ $context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
 
 $context['basesThematiques'] = [
 		'title' => get_category_by_slug('bases_thematiques')->name,
-		'posts' => Timber::get_posts(['category_name' => bases_thematiques, 'orderby' => 'name', 'order' => 'ASC'])
+		'posts' => Timber::get_posts(['category_name' => 'bases_thematiques', 'orderby' => 'name', 'order' => 'ASC'])
 ];
 $context['ebooksWiley'] = [
 		'title' => get_category_by_slug('e_books_wiley')->name,
-		'posts' => Timber::get_posts(['category_name' => e_books_wiley, 'orderby' => 'name', 'order' => 'ASC'])
+		'posts' => Timber::get_posts(['category_name' => 'e_books_wiley', 'orderby' => 'name', 'order' => 'ASC'])
 ];
 $parentLinkID = get_cat_ID('liens utiles');
 $useLinks = get_categories( array('child_of' => $parentLinkID, 'orderby' => 'term_id', 'order' => 'ASC',) );

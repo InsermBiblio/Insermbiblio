@@ -115,6 +115,9 @@ input, select, .searchInputReset {
     width: 390px;
     padding-left: 10px;
 }
+#searchboxholdingsid {
+    padding-left: 10px;
+}
 #SearchTerm1-clear,
 #SearchTerm2-clear,
 #SearchTerm3-clear {
