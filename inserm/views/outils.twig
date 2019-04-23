@@ -17,17 +17,35 @@
             <h1>{{category.name}}</h1>
             <div id="pageOutils">
                 <div id="menuOutils">
-                {% for post in posts %}
-                    <h2 class="titreOutils" id="titre-{{loop.index}}">{{post.title}}</h2>
+                {% set foo = 1 %}
+                <ul class="menuOutil">
+                {% for post in autres %}
+                    <li class="titreOutils outilsBib" id="titre-{{foo}}">{{post.title}}</li>
+                    {% set foo = foo + 1 %}
+                 {% endfor %}
+                <li id="logiciels">Logiciels bibliographiques</li>
+                {% for post in biblio %}
+                    <li class="titreOutils2 outilsBib" id="titre-{{foo}}">{{post.title}}</li>
+                    {% set foo = foo + 1 %}
                 {% endfor %}
+                </ul>
                 </div>
                 <div id="textOutils">
-                {% for post in posts %}
-                    <div id="text-{{loop.index}}" class="noshow">
+                {% set bar = 1 %}
+                {% for post in autres %}
+                     <div id="text-{{bar}}" class="noshow">
+                        <h2>{{post.title}}</h2>
                         {{post.post_content}}
-
                     </div>
+                    {% set bar = bar + 1 %}
                 {% endfor %}
+                {% for post in biblio %}
+                     <div id="text-{{bar}}" class="noshow">
+                        <h2>{{post.title}}</h2>
+                        {{post.post_content}}
+                    </div>
+                    {% set bar = bar + 1 %}
+                 {% endfor %}
                 </div>
             </div>
         </div>
