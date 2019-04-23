@@ -1,7 +1,7 @@
 {% extends 'page-layout.twig' %}
 {% block javascript %}
     <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="{{theme.uri}}/js/flip.js"></script>
+    <script type="text/javascript" src="{{theme.uri}}/js/column.js"></script>
 {% endblock %}
 {% block title %}
     {{parent()}} - Sites Thématiques - {{category.name}}
@@ -14,23 +14,47 @@
             </a>
         </div>
         <div id="pagetext">
-            <h1>Sites thématiques : {{category.name}}</h1>
+            <h1>Sites thématiques - {{category.name}}</h1>
             <div id="pageSites">
                 <ul id="menuSites">
                     {% for item in sitesThematiques %}
-                        {% if item.title == category.name  %}
-                            <li>
-                                <a href="{{site.url}}/category/{{item.slug}}" class="active">{{item.title}}</a>
-                            </li>
+                        {% if item.slug == 'omics' %}
+                            {% if item.title == category.name %}
+                                <li class="childCat">
+                                    <a href="{{site.url}}/category/{{item.slug}}" class="active">{{item.title}}</a>
+                                </li>
+                            {% else %}
+                                <li class="childCat">
+                                    <a href="{{site.url}}/category/{{item.slug}}">{{item.title}}</a>
+                                </li>
+                            {% endif %}
+                            {% for child in omics %}
+                                {% if child.title == category.name %}
+                                    <li  class="subCat">
+                                        <a href="{{site.url}}/category/{{child.slug}}" class="active">{{child.title}}</a>
+                                    </li>
+                                {% else %}
+                                    <li  class="subCat">
+                                        <a href="{{site.url}}/category/{{child.slug}}">{{child.title}}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         {% else %}
-                            <li>
-                                <a href="{{site.url}}/category/{{item.slug}}">{{item.title}}</a>
-                            </li>
+                            {% if item.title == category.name  %}
+                                <li class="parentCat">
+                                    <a href="{{site.url}}/category/{{item.slug}}" class="active">{{item.title}}</a>
+                                </li>
+                            {% else %}
+                                <li class="parentCat">
+                                    <a href="{{site.url}}/category/{{item.slug}}">{{item.title}}</a>
+                                </li>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}                    
                 </ul>
                 <div id="columnSite">
                 {% for post in posts %}
+                {% if post.title != 'omics' %}
                     <div class="siteThematique">
                         <div class="siteHeader">                                              
                                 <img src="{{ TimberImage(post.logo).src }}" alt="" class="siteLogo">
@@ -43,6 +67,7 @@
                             {{post.post_content}}
                         </div>
                     </div>
+                {% endif %}
                 {% endfor %}
                 </div>
             </div>

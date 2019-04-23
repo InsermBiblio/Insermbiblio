@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="{{theme.uri}}/images/favicon.ico" type="images/x-icon">
+<!--    <link rel="icon" href="{{theme.uri}}/images/favicon.ico" type="images/x-icon"> -->
     {% block css %}
         <link href="https://fonts.googleapis.com/css?family=Asap:400,600,700" rel="stylesheet">
         <link rel="stylesheet" media="all" href="{{theme.uri}}/style.css" type="text/css">
@@ -51,29 +51,8 @@
         {% block content %}
         {% endblock %}
     </div>
-    {% block footer %}
     <footer>
-        <img src="{{theme.uri}}/images/tetiaire_blanche.png" alt="decoration" class="tetiaire"/>
-        <div id="usefulLinks">
-            Liens utiles
-        </div>
-        <div id="allLinks">
-            {% for item in useLinks %}
-                <div class="footer_links">
-                    <div class="footer_title">                     
-                        {{item.title}}
-                    </div>
-                    <ul class="col{{item.nbcol}}">
-                        {% for link in item.posts %}
-                            <li>
-                                <img src="{{theme.uri}}/images/squarewhite.png" alt="" class="squareWhite">
-                                <a href="{{link.url_du_site}}" target="blank">{{link.name}}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endfor %}
-        </div>
+    {% block footer %}
         <div id="footerBottom">
             <div id="footerLogos">
                 <a href="https://www.inserm.fr" target="_blank">
@@ -99,8 +78,8 @@
             {% endfor %}
             </div>
         </div>
-    </footer>
     {% endblock %}
+    </footer>
     {{wp_footer}}
 </body>
 </html>

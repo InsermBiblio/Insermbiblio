@@ -1,0 +1,43 @@
+{% extends 'page-layout.twig' %}
+{% block javascript %}
+        <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="{{theme.uri}}/js/publication.js"></script>
+{% endblock %}
+{% block title %}
+    {{parent()}} - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pagetext">
+            <h1>{{category.name}}</h1>
+            <div id="pageOutils">
+                <div id="menuOutils">
+                {% for post in posts %}
+                    <h2 class="titreOutils" id="titre-{{loop.index}}">{{post.title}}</h2>
+                {% endfor %}
+                </div>
+                <div id="textPublications">
+                {% for post in posts %}
+                    <div id="text-{{loop.index}}" class="noshow">
+                        <h2>{{post.title}}</h2>
+                        {{post.content}}
+                    </div>
+                {% endfor %}
+                </div>
+                 {% for post in posts %}
+                    {% if post.custom.liens_en_rapport %}
+                    <div id="liensPublication-{{loop.index}}" class="noshow liensPublication">
+                        <div id="linkTitle">Liens</div>
+                        {{ post.meta('liens_en_rapport') }}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

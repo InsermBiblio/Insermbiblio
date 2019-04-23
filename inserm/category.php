@@ -19,22 +19,40 @@ $nicename = $category[0]->category_nicename;
 $name = $category[0]->name;
 $parent = $category[0]->parent;
 $parentThematiques = get_cat_ID('sites thematiques');
+$parentOmics = get_cat_ID('omics');
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
-if ($parent == $parentThematiques ) {
+if ($parent == $parentThematiques or $parent == $parentOmics) {
 	$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'term_id', 'order' => 'DESC') );
 	foreach ($sitesThematiques as $link) {
 		$links=(array)$link;
-		$context['sitesThematiques'][] = [
-			'title' => $links['name'],
-			'slug' => $links['slug']
-		];
+		if ($links['parent'] == $parentThematiques) {
+			$context['sitesThematiques'][] = [
+				'title' => $links['name'],
+				'slug' => $links['slug']
+			];
+		}
+		elseif ($links['parent'] == $parentOmics) {
+			$context['omics'][] =[
+				'title' => $links['name'],
+				'slug' => $links['slug']
+			];
+		}
 	}
+	//print_r($category);	
     Timber::render('sites-thematiques.twig', $context);
 }
 elseif ($nicename == "outils-gestion") {
+	$context['biblio'] = Timber::get_posts(['category_name' => 'logiciels-bibliographiques']);
+	$context['autres'] = Timber::get_posts(['category_name' => 'autres-outils']);
 	Timber::render('outils.twig', $context);
+}
+elseif ($nicename == "ressources") {
+	Timber::render('ressources.twig', $context);
+}
+elseif ($nicename == "publications") {
+	Timber::render('publications.twig', $context);
 }
 else {
     Timber::render('category.twig', $context);
 }
-// print_r($context);
+//print_r($context['biblio']);

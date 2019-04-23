@@ -9,6 +9,7 @@
 {% block javascript %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{theme.uri}}/js/FormProcessing.js"></script>
+    <script type="text/javascript" src="{{theme.uri}}/js/ebsco.js"></script>
 {% endblock %}
 {% block content %}
 {% for warning in alerte %}
@@ -31,25 +32,34 @@
             {% endfor %}
             </ul>
             {% for link in votrePortail.child %}
-                <div class="portailTitle">{{link.name}}</div>
+                <div class="portailTitle"><a href="{{site.url}}/category/{{link.slug}}">{{link.name}}</a></div>
                 <ul class="leftBox">
+                {% set limit = 4 %}
+                {% set length = 0 %}
                 {% for child in link.childposts %}
+                    {% if loop.index < limit + 1 %}
                     <li>
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
-                        <a href="{{site.url}}/{{child.slug}}">{{child.post_title}}</a>
+                        {{child.post_title}}
                     </li>
+                    {% endif %}
+                    {% set length = loop.length %}
                 {% endfor %}
+                {% if length > limit %}
+                    <li><img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">&nbsp;&nbsp;...</li>
+                {% endif %}
+                <span class="fleche">
+                    <a href="{{site.url}}/category/{{link.slug}}"></a>
+                </span>
                 </ul>
             {% endfor %}
-<!--
-            <span class="fleche">
-                <a href="{{site.url}}/category/{{etAussi.slug}}"></a>
-            </span>
--->
         </div>
         <div class="center">
             <div class="title">
-               Ressources électroniques en accès réservé            
+               Ressources électroniques en accès réservé
+               <a href="{{site.url}}/aide">
+                    <img src="{{theme.uri}}/images/picto_information.png" alt="information">
+               </a>           
             </div>
             {{ include('ebsco.twig') }}
             <div id="baseTop">
@@ -169,4 +179,28 @@
             </div>
         </div>
 </div>
+{% endblock %}
+{% block footer %}
+    <img src="{{theme.uri}}/images/tetiaire_blanche.png" alt="decoration" class="tetiaire"/>
+    <div id="usefulLinks">
+        Liens utiles
+    </div>
+    <div id="allLinks">
+        {% for item in useLinks %}
+            <div class="footer_links">
+                <div class="footer_title">                     
+                    {{item.title}}
+                </div>
+                <ul class="col{{item.nbcol}}">
+                    {% for link in item.posts %}
+                        <li>
+                            <img src="{{theme.uri}}/images/squarewhite.png" alt="" class="squareWhite">
+                            <a href="{{link.url_du_site}}" target="blank">{{link.name}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+    {{ parent() }}
 {% endblock %}
