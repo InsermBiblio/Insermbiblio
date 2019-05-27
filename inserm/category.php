@@ -22,7 +22,7 @@ $parentThematiques = get_cat_ID('sites thematiques');
 $parentOmics = get_cat_ID('omics');
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
 if ($parent == $parentThematiques or $parent == $parentOmics) {
-	$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'term_id', 'order' => 'DESC') );
+	$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'name', 'order' => 'ASC') );
 	foreach ($sitesThematiques as $link) {
 		$links=(array)$link;
 		if ($links['parent'] == $parentThematiques) {
