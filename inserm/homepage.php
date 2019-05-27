@@ -60,14 +60,16 @@ foreach ($openAccess as $link) {
 	];
 }
 $parentThematiques = get_cat_ID('sites thematiques');
-$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'term_id', 'order' => 'DESC') );
+$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'name', 'order' => 'ASC') );
 foreach ($sitesThematiques as $link) {
 	$links=(array)$link;
-	$context['sitesThematiques'][] = [
-		'title' => $links['name'],
-		'nbcol' => (int)($links['count']/8+1),
-		'slug' => $links['slug']
-	];
+	if ($links['parent'] == $parentThematiques) {
+		$context['sitesThematiques'][] = [
+			'title' => $links['name'],
+			'nbcol' => (int)($links['count']/8+1),
+			'slug' => $links['slug']
+		];
+	}
 }
 $context['home_sidebar'] = Timber::get_widgets('home_sidebar');
 $context['basesAccueil'] = Timber::get_posts(['category_name' => 'bases_accueil', 'showposts' => 3]);
