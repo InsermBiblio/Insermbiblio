@@ -1,0 +1,25 @@
+{% extends 'category.twig' %}
+{% block title %}
+    {{parent()}} - {{single.title}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageActus">
+            <h1>{{single.title}}</h1>
+            <div class="date">{{single.date}}</div>
+            <div class="singleActus">
+                <div class="singleActusImg">
+                    <img src="{{single.thumbnail.src}}" alt="décoration actu">
+                </div>
+                <div class="singleActusText">
+                    {{single.content}}            
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

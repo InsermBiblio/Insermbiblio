@@ -15,6 +15,7 @@ foreach ($useLinks as $link) {
 	];
 }
 $context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
+
 if ($context['posts'][0]->slug == 'la-bibliotheque-numerique-de-linserm') {
 	Timber::render('presentation.twig', $context);
 }

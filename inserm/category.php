@@ -38,7 +38,6 @@ if ($parent == $parentThematiques or $parent == $parentOmics) {
 			];
 		}
 	}
-	//print_r($category);	
     Timber::render('sites-thematiques.twig', $context);
 }
 elseif ($nicename == "outils-gestion") {
@@ -51,6 +50,9 @@ elseif ($nicename == "ressources") {
 }
 elseif ($nicename == "publications") {
 	Timber::render('publications.twig', $context);
+}
+elseif ($nicename == "actus") {
+	Timber::render('actus.twig', $context);
 }
 else {
     Timber::render('category.twig', $context);

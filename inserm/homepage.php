@@ -19,13 +19,13 @@ $context['votrePortail'] = [
 		'posts' => Timber::get_posts(['category_name' => $parent['slug'], 'category__in' => $parentID])
 ];
 $portalChild = get_categories( array('child_of' => $parentID, 'order' => 'DESC') );
-foreach($portalChild as $portal){
+foreach($portalChild as $portal) {
 	$portals =(array)$portal;
-	$context['votrePortail']['child'][] = [
-		'name' => $portals['name'],
-		'slug' => $portals['slug'],
-		'childposts' => Timber::get_posts([ 'category_name' => $portals['slug']])
-	];
+		$context['votrePortail']['child'][] = [
+			'name' => $portals['name'],
+			'slug' => $portals['slug'],
+			'childposts' => Timber::get_posts([ 'category_name' => $portals['slug']])
+		];
 }
 $linkCategoriesFooter = get_categories(array('taxonomy' => 'link_category', 'orderby' => 'term_id', 'include' => '2,3,4,5'));
 foreach($linkCategoriesFooter as $slug){
@@ -73,5 +73,5 @@ foreach ($sitesThematiques as $link) {
 }
 $context['home_sidebar'] = Timber::get_widgets('home_sidebar');
 $context['basesAccueil'] = Timber::get_posts(['category_name' => 'bases_accueil', 'showposts' => 3]);
-//print_r($context['sitesThematiques']);
+//print_r($context['votrePortail']);
 Timber::render('homepage.twig', $context);
