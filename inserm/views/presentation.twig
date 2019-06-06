@@ -17,13 +17,14 @@
         <div id="presentationText">
             {% for post in posts %}
                 <h1>{{post.title}}</h1>
-                <div id="subTitle">{{post.sous_titre}}</div>
-                <span id="flipText" class="moreText" onclick="flipflop('subTitleText');"></span>
                 <div id="subTitleText">{{post.content}}</div>
+                <span id="flipText" class="moreText" onclick="flipflop('frame');"></span>
                 <div id="frame">
                     <div id="frameTitle">{{post.titre}}</div>
                     <div id="frameText">{{post.liste}}</div>
                 </div>
+                <div id="presContact">Pour toute information, veuillez <a href="{{site.url}}/contact">nous contacter</a> 
+</div>
             {% endfor %}
         </div>
     </div>

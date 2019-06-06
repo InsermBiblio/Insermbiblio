@@ -1,0 +1,30 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {{parent()}} - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageActus">
+            <h1>{{category.name}}</h1>
+            <div id="actusFlex">
+            {% for post in posts %}
+                <div id="actus">
+                    <div class="actusImg">
+                        <img src="{{post.thumbnail.src}}" alt="décoration actu">
+                    </div>
+                    <div class="actusText">
+                        <h2>{{post.title}}</h2>
+                        <div class="date">{{post.date}}</div>
+                        <span class="moreActus"><a href="{{site.url}}/{{post.slug}}"></a></span>                        
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

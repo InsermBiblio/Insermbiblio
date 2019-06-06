@@ -34,13 +34,15 @@
             {% for link in votrePortail.child %}
                 <div class="portailTitle"><a href="{{site.url}}/category/{{link.slug}}">{{link.name}}</a></div>
                 <ul class="leftBox">
-                {% set limit = 4 %}
+                {% set limit = 3 %}
                 {% set length = 0 %}
                 {% for child in link.childposts %}
                     {% if loop.index < limit + 1 %}
                     <li>
+                        <a href="{{site.url}}/category/{{link.slug}}?link={{child.slug}}">
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
                         {{child.post_title}}
+                        </a>
                     </li>
                     {% endif %}
                     {% set length = loop.length %}
@@ -65,7 +67,7 @@
             <div id="baseTop">
                 {% for base in basesAccueil %}
                     <div class="dbHome">
-                        <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" data-title="{{base.post_content}}">
+                        <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank">
                             <div class="visuel">
                                 <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >
                             </div>
@@ -73,7 +75,10 @@
                                 <img src="{{base.thumbnail.src}}" class="dbHomeLogo" >
                                 <div class="dbName">
                                     {{base.title}}
-                                </div>                            
+                                </div>
+                                <div class="dbText">
+                                    {{base.content}}
+                                </div>                          
                             </div>
                         </a>
                     </div>
