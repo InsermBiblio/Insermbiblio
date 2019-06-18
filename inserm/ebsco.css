@@ -17,7 +17,7 @@
     display: inline-block;
     cursor:pointer;
     font-size: 1.3rem;
-    line-height:26px;
+    line-height:2.4rem;
     height:26px;
     color:black;
     text-align:center;
@@ -216,6 +216,7 @@ input, select, .searchInputReset {
     background-color: #fff;    
 }
 #auto-results_eds li {
+    font-size: 1.3rem;
     list-style-type: none;
     padding-bottom: 5px;
 }

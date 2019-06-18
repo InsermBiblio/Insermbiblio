@@ -17,26 +17,54 @@
             <h1>{{category.name}}</h1>
             <div id="pageOutils">
                 <div id="menuOutils">
-                {% for post in posts %}
-                    <h2 class="titreOutils" id="titre-{{loop.index}}">{{post.title}}</h2>
-                {% endfor %}
+                    <ul class="menuOutil">
+                    {% for post in publications %}
+                        <li class="titreOutils outilsBib" id="titre-{{post.id}}">{{post.title}}</li>
+                    {% endfor %}
+                    {% for post in sousPublications %}
+                        <li class="titreOutilsCat">{{post.title}}</li>
+                        {% for item in post.sousposts %}
+                            <li class="titreOutils2 outilsBib" id="titre-{{item.id}}">{{item.title}}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    </ul>
                 </div>
                 <div id="textPublications">
-                {% for post in posts %}
-                    <div id="text-{{loop.index}}" class="noshow">
+                {% for post in publications %}
+                    <div id="text-{{post.id}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
                         {{post.content}}
                     </div>
                 {% endfor %}
-                </div>
-                 {% for post in posts %}
-                    {% if post.custom.liens_en_rapport %}
-                    <div id="liensPublication-{{loop.index}}" class="noshow liensPublication">
-                        <div id="linkTitle">Liens</div>
-                        {{ post.meta('liens_en_rapport') }}
-                    </div>
-                    {% endif %}
+                {% for post in sousPublications %}
+                    {% for item in post.sousposts %}
+                        <div id="text-{{item.id}}" class="noshow textPage">
+                            <h2>{{item.title}}</h2>
+                            {{item.content}}
+                        </div>
+                    {% endfor %}
                 {% endfor %}
+                </div>
+                <div id="liensPublications">
+                     {% for post in publications %}
+                        {% if post.custom.liens_en_rapport %}
+                        <div id="liensPublication-{{post.id}}" class="noshow liensPublication">
+                            <div id="linkTitle">Liens</div>
+                            {{ post.meta('liens_en_rapport') }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% for post in sousPublications %}
+                        {% for item in post.sousposts %}
+                            {% if item.custom.liens_en_rapport %}
+                            <div id="liensPublication-{{item.id}}" class="noshow liensPublication">
+                                <div id="linkTitle">Liens</div>
+                                {{ item.meta('liens_en_rapport') }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
