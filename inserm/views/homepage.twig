@@ -33,13 +33,13 @@
             </ul>
             {% for link in votrePortail.child %}
                 <div class="portailTitle"><a href="{{site.url}}/category/{{link.slug}}">{{link.name}}</a></div>
-                <ul class="leftBox">
+                <ul class="leftBox" id="{{link.slug}}">
                 {% set limit = 3 %}
                 {% set length = 0 %}
                 {% for child in link.childposts %}
                     {% if loop.index < limit + 1 %}
                     <li>
-                        <a href="{{site.url}}/category/{{link.slug}}?link={{child.slug}}">
+                        <a href="{{site.url}}/category/{{link.slug}}?link={{child.id}}">
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
                         {{child.post_title}}
                         </a>

@@ -33,16 +33,16 @@
                 <div id="textOutils">
                 {% set bar = 1 %}
                 {% for post in autres %}
-                     <div id="text-{{bar}}" class="noshow">
+                     <div id="text-{{bar}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
-                        {{post.post_content}}
+                        {{post.content}}
                     </div>
                     {% set bar = bar + 1 %}
                 {% endfor %}
                 {% for post in biblio %}
-                     <div id="text-{{bar}}" class="noshow">
+                     <div id="text-{{bar}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
-                        {{post.post_content}}
+                        {{post.content}}
                     </div>
                     {% set bar = bar + 1 %}
                  {% endfor %}

@@ -21,11 +21,13 @@ $context['votrePortail'] = [
 $portalChild = get_categories( array('child_of' => $parentID, 'order' => 'DESC') );
 foreach($portalChild as $portal) {
 	$portals =(array)$portal;
+	if ($portals['parent'] == $parentID) {
 		$context['votrePortail']['child'][] = [
 			'name' => $portals['name'],
 			'slug' => $portals['slug'],
 			'childposts' => Timber::get_posts([ 'category_name' => $portals['slug']])
 		];
+	}
 }
 $linkCategoriesFooter = get_categories(array('taxonomy' => 'link_category', 'orderby' => 'term_id', 'include' => '2,3,4,5'));
 foreach($linkCategoriesFooter as $slug){
@@ -56,7 +58,7 @@ foreach ($openAccess as $link) {
 	$context['openAccess'][] = [
 		'title' => $links['name'],
 		'nbcol' => (int)($links['count']/8+1),
-		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
+		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'DESC' ])
 	];
 }
 $parentThematiques = get_cat_ID('sites thematiques');

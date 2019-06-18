@@ -21,6 +21,10 @@ $parent = $category[0]->parent;
 $parentThematiques = get_cat_ID('sites thematiques');
 $parentOmics = get_cat_ID('omics');
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
+
+// traitement sous-categories publications
+$parentPublications = get_cat_ID('publications');
+
 if ($parent == $parentThematiques or $parent == $parentOmics) {
 	$sitesThematiques = get_categories( array('child_of' => $parentThematiques, 'orderby' => 'name', 'order' => 'ASC') );
 	foreach ($sitesThematiques as $link) {
@@ -40,6 +44,23 @@ if ($parent == $parentThematiques or $parent == $parentOmics) {
 	}
     Timber::render('sites-thematiques.twig', $context);
 }
+elseif ($parent == $parentPublications or $nicename == "publications" ) {
+	$sousPublications = get_categories( array('child_of' => $parentPublications, 'orderby' => 'name', 'order' => 'ASC') );
+	foreach ($sousPublications as $link) {
+		$links=(array)$link;
+		if ($links['parent'] == $parentPublications) {
+			$context['sousPublications'][] = [
+				'title' => $links['name'],
+				'slug' => $links['slug'],
+				'parent' => $links['parent'],
+				'sousposts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
+			];
+			$exclusion[] = $links['cat_ID'];
+		}
+	}
+	$context['publications'] = Timber::get_posts([ 'category_name' => 'publications', 'category__not_in' => $exclusion ]);
+	Timber::render('publications.twig', $context);
+}
 elseif ($nicename == "outils-gestion") {
 	$context['biblio'] = Timber::get_posts(['category_name' => 'logiciels-bibliographiques']);
 	$context['autres'] = Timber::get_posts(['category_name' => 'autres-outils']);
@@ -47,9 +68,6 @@ elseif ($nicename == "outils-gestion") {
 }
 elseif ($nicename == "ressources") {
 	Timber::render('ressources.twig', $context);
-}
-elseif ($nicename == "publications") {
-	Timber::render('publications.twig', $context);
 }
 elseif ($nicename == "actus") {
 	Timber::render('actus.twig', $context);
