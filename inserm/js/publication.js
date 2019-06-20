@@ -12,21 +12,14 @@ function publication() {
     var encours = url.split("link=")[1];   
     var prochaine;
     if ( typeof encours === 'undefined') {
-        $( ".menuOutil li:first-child" ).toggleClass('active');
-        $( "#textPublications div:first-child" ).toggleClass('noshow');
-        $( "#liensPublications div:first-child" ).toggleClass('noshow');
-        encours = 1;
-    }
+        var firstDivID = document.getElementById("textPublications").getElementsByTagName('div')[0].id;
+        encours = firstDivID.split("text-")[1];
+     }
     $('#titre-'+encours).toggleClass('active');
     $('#text-'+encours).toggleClass('noshow');
     $('#liensPublication-'+encours).toggleClass('noshow');
 
     $('.outilsBib').click(function(e) {
-        if (encours == 1) {
-            $( ".menuOutil li:first-child" ).toggleClass('active');
-            $( "#textPublications div:first-child" ).toggleClass('noshow');
-            $( "#liensPublications div:first-child" ).toggleClass('noshow');            
-        }
         prochaine = $(e.target).attr('id').split("-")[1];
         anime_menu();
     });
