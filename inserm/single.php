@@ -28,4 +28,9 @@ $context['infoFooter'] = Timber::get_posts(['category_name' => 'footer-info']);
 $context['single'] = new TimberPost();
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
 $context['services'] = Timber::get_posts(['category_name' => 'services']);
-Timber::render('single.twig', $context);
+if ($nicename == "actus") {
+	Timber::render('singleactus.twig', $context);
+}
+else {
+	Timber::render('single.twig', $context);
+}

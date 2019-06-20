@@ -125,7 +125,7 @@
                         <ul class="col1">
                             {% for item in link.posts %}
                                 <li class="link">
-                                    <a href="{{item.link_url}}" target="blank">
+                                    <a href="{{item.url_access}}" target="blank">
                                         {{item.name}}                          
                                     </a>
                                     <div class="linkText">
@@ -139,7 +139,7 @@
                             {% for item in link.posts %}
                                 {% if loop.index < 9 %}
                                 <li class="link">
-                                   <a href="{{item.link_url}}" target="blank">
+                                   <a href="{{item.url_access}}" target="blank">
                                         {{item.name}}                          
                                     </a>
                                     <div class="linkText">
@@ -153,7 +153,7 @@
                             {% for item in link.posts %}
                                 {% if loop.index > 8 %}
                                 <li class="link">
-                                    <a href="{{item.link_url}}" target="blank">
+                                    <a href="{{item.url_access}}" target="blank">
                                         {{item.name}}                          
                                     </a>
                                     <div class="linkText">
