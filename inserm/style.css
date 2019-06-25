@@ -95,6 +95,17 @@ li {
 .clear {
     clear: both;
 }
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+.alignright {
+    float: right;
+    margin-left: 15px
+}
+.bsbb {
+    box-sizing: border-box;
+}
 /*****************************/
 /* Header ********************/
 /*****************************/
@@ -367,7 +378,7 @@ header .bandeau {
                             "a oa oa";
     grid-template-columns: 175px 1fr 175px;
     column-gap: 25px;
-    row-gap: 50px;
+    row-gap: 80px;
     margin-top: 50px;
 }
 .leftBoxTop {
@@ -465,7 +476,7 @@ header .bandeau {
     padding: 5px;
     position: absolute;
     right: 5px;
-    bottom: -1px;
+    bottom: 5px;
 	content: url(images/chevron-right-small.svg);
     vertical-align: bottom;
 }
@@ -931,17 +942,16 @@ header .bandeau {
 }
 #columnSite {
 	width: calc(100% - 180px);
-    min-width: 310px;
+    min-width: 412px;
     padding: 8px;
 }
 #columnSite .siteCol {
 	width: 50%;
-    min-width: 300px;
+    min-width: 452px;
     overflow: hidden;
     display: inline-block;
     vertical-align: top;
-    margin: 10 10%;
-	padding: 10px 30px 10px 30px;
+	padding: 10px 20px 10px 20px;
 }
 .siteThematique {
     border: 3px solid #f3f1f1;
@@ -951,6 +961,7 @@ header .bandeau {
     cursor: pointer;
     position: relative;
     margin-bottom: 10px;
+    width: 412px;
 }
 .siteHeader {
     width: 100%;
@@ -962,6 +973,7 @@ header .bandeau {
 }
 .siteHeader h2 a {
     color: #056180;
+    font-weight: 700;
 }
 .siteHeader h2 a:hover {
     color: #e64415;
@@ -973,7 +985,7 @@ header .bandeau {
     padding: 5px;
     object-fit: contain;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 .changeText {
     position: absolute;
@@ -988,8 +1000,8 @@ header .bandeau {
 }
 .siteText {
     display: block;
-    font-family: "Source Sans Pro";
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    line-height: 160%;
     color: #141414;
     padding: 10px;
     clear: both;
@@ -1069,7 +1081,7 @@ header .bandeau {
 .textPage > ul, #pageText > ul, #textOutils > ul, #textRessources > ul {
     list-style-image: url(images/squareblue.png);
 }
-.textPage li, #pageText li, #textOutils li, #textRessources li {
+.textPage li, #textOutils li, #textRessources li {
     list-style-position: inside; 
     text-indent: -12px;
     margin-bottom: 25px;
@@ -1105,10 +1117,14 @@ header .bandeau {
 }
 #liensPublications {
     width: 150px;
-    padding: 10px;
-    border: 2px solid #f3f1f1;
     align-self: flex-start;
     font-size: 1.2rem;
+    position: sticky;
+    top: 50px;    
+}
+.liensPublication {
+    padding: 10px;
+    border: 2px solid #f3f1f1;
 }
 .liensPublication ul {
     margin-inline-start: 15px;
