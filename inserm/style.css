@@ -1062,11 +1062,13 @@ header .bandeau {
     width: calc(100% - 250px);
     min-width: 300px;
     padding: 10px 10px 10px 30px;
+    line-height: 160%;
 }
 #textRessources {
 	width: calc(100% - 160px);
     min-width: 300px;
-    padding: 10px 50px 10px 50px;   
+    padding: 10px 50px 10px 50px;
+    line-height: 160%;   
 }
 #textPublications {
     width: calc(100% - 310px);
@@ -1074,7 +1076,10 @@ header .bandeau {
     padding: 10px 60px 10px 50px;
     line-height: 160%;
 }
-#textPublications ul, #pageText ul, #textOutils ul, #textRessources ul {
+#pageText ul {
+    list-style-type: none;
+}
+#textPublications ul, #textRessources ul, #textOutils ul {
     list-style-type: none;
     padding-left: 50px;
 }
