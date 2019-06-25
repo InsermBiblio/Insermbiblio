@@ -49,10 +49,10 @@
                 {% endfor %}
                 {% if length > limit %}
                     <li><img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">&nbsp;&nbsp;...</li>
+                    <span class="fleche">
+                        <a href="{{site.url}}/category/{{link.slug}}"></a>
+                    </span>
                 {% endif %}
-                <span class="fleche">
-                    <a href="{{site.url}}/category/{{link.slug}}"></a>
-                </span>
                 </ul>
             {% endfor %}
         </div>
