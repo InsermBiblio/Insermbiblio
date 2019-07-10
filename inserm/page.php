@@ -22,4 +22,3 @@ if ($context['posts'][0]->slug == 'la-bibliotheque-numerique-de-linserm') {
 else {
 	Timber::render('page.twig', $context);
 }
-//print_r($context);

@@ -12,10 +12,12 @@
             </a>
         </div>
         <div id="pageText">
+            <div id="presentationText">
             {% for post in posts %}
                 <h1>{{post.title}}</h1>
                 {{post.content}}
             {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

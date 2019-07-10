@@ -67,6 +67,7 @@ h5 {
 }
 a {
     text-decoration: none;
+    color: #3f7e93;
 }
 a:visited {
      text-decoration: none;
@@ -298,6 +299,8 @@ header .bandeau {
     margin-bottom: 0px;
 }
 .wpcf7-text, .wpcf7-select {
+    line-height: 35px!important;
+    -webkit-appearance: menulist!important;
     height: 35px;
     width: 100%;   
 }
@@ -378,7 +381,7 @@ header .bandeau {
                             "a oa oa";
     grid-template-columns: 175px 1fr 175px;
     column-gap: 25px;
-    row-gap: 80px;
+    grid-row-gap: 80px;
     margin-top: 50px;
 }
 .leftBoxTop {
@@ -604,7 +607,7 @@ header .bandeau {
  .link:hover .linkText {
     display: block;
     position: absolute;
-	top: 27px;
+	top: 13px;
     left:50px;
     width: 280px;
     z-index: 1000;
@@ -711,6 +714,9 @@ header .bandeau {
     padding: 20px 20px 20px 20px;
     background-color: #fef7ee;
 }
+#presentationText {
+    width: calc(100% - 160px);
+}
 /*****************************/
 /* Page présentation *********/
 /*****************************/
@@ -727,21 +733,6 @@ header .bandeau {
 }
 #subTitleText ul, #frameText ul{
     list-style-type: none;
-}
-#subTitleText  > ul , #frameText > ul {
-    list-style-image: url(images/squareblack.png);
-}
-#subTitleText li, #frameText li {
-    list-style-position: inside; 
-    padding-left: 12px;
-    text-indent: -12px;
-}
-#subTitleText > ul > li > ul, #frameText > ul > li > ul {
-    list-style: none;
-}
-#subTitleText > ul > li > ul > li:before, #frameText > ul > li > ul > li:before {
-    padding-left: 50px;
-    content: "> ";
 }
 #subTitleText a, #subTitleText a:visited {
     color: #e64415;
@@ -1065,7 +1056,7 @@ header .bandeau {
     line-height: 160%;
 }
 #textRessources {
-	width: calc(100% - 160px);
+	width: calc(100% - 310px);
     min-width: 300px;
     padding: 10px 50px 10px 50px;
     line-height: 160%;   
@@ -1079,14 +1070,14 @@ header .bandeau {
 #pageText ul {
     list-style-type: none;
 }
-#textPublications ul, #textRessources ul, #textOutils ul {
+#textPublications ul, #textRessources ul, #textOutils ul, #presentationText ul {
     list-style-type: none;
     padding-left: 50px;
 }
-.textPage > ul, #pageText > ul, #textOutils > ul, #textRessources > ul {
+.textPage > ul, #pageText > ul, #textOutils > ul, #textRessources > ul, #presentationText > ul {
     list-style-image: url(images/squareblue.png);
 }
-.textPage li, #textOutils li, #textRessources li {
+.textPage ul li, #textOutils ul li, #textRessources ul li, #presentationText ul li {
     list-style-position: inside; 
     text-indent: -12px;
     margin-bottom: 25px;
@@ -1120,6 +1111,25 @@ header .bandeau {
 #textPublications a:hover {
 	color: #e64415;
 }
+#textPublications {
+    counter-reset: compteListe;   
+}
+ol {
+    list-style-type: none;
+}
+ol li {
+    margin-bottom: 25px;
+    list-style-position: inside;
+}
+ol li::before {
+    counter-increment: compteListe ;
+    content: counter(compteListe) " ";
+    color: #3f7e93;
+    display: inline-block; width: 1em;
+    text-align: left; 
+    direction: rtl;
+}
+
 #liensPublications {
     width: 150px;
     align-self: flex-start;

@@ -1,7 +1,7 @@
 {% extends 'page-layout.twig' %}
 {% block javascript %}
         <script type="text/javascript" src="{{theme.uri}}/js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="{{theme.uri}}/js/outils.js"></script>
+        <script type="text/javascript" src="{{theme.uri}}/js/ressources.js"></script>
 {% endblock %}
 {% block title %}
     {{parent()}} - {{category.name}}
@@ -17,34 +17,28 @@
             <h1>{{category.name}}</h1>
             <div id="pageOutils">
                 <div id="menuOutils">
-                {% set foo = 1 %}
                 <ul class="menuOutil">
                 {% for post in autres %}
-                    <li class="titreOutils outilsBib" id="titre-{{foo}}">{{post.title}}</li>
-                    {% set foo = foo + 1 %}
+                    <li class="titreOutils outilsBib" id="titre-{{post.id}}">{{post.title}}</li>
                  {% endfor %}
                 <li id="logiciels">Logiciels bibliographiques</li>
                 {% for post in biblio %}
-                    <li class="titreOutils2 outilsBib" id="titre-{{foo}}">{{post.title}}</li>
-                    {% set foo = foo + 1 %}
+                    <li class="titreOutils2 outilsBib" id="titre-{{post.id}}">{{post.title}}</li>
                 {% endfor %}
                 </ul>
                 </div>
-                <div id="textOutils">
-                {% set bar = 1 %}
+                <div id="textRessources">
                 {% for post in autres %}
-                     <div id="text-{{bar}}" class="noshow textPage">
+                     <div id="text-{{post.id}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
                         {{post.content}}
                     </div>
-                    {% set bar = bar + 1 %}
                 {% endfor %}
                 {% for post in biblio %}
-                     <div id="text-{{bar}}" class="noshow textPage">
+                     <div id="text-{{post.id}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
                         {{post.content}}
                     </div>
-                    {% set bar = bar + 1 %}
                  {% endfor %}
                 </div>
             </div>
