@@ -19,7 +19,6 @@ $nicename = $category[0]->category_nicename;
 $name = $category[0]->name;
 $parent = $category[0]->parent;
 $parentName = get_category($parent)->category_nicename;
-echo $parentName;
 $parentThematiques = get_cat_ID('sites thematiques');
 $parentOmics = get_cat_ID('omics');
 $context['category'] = array('nicename'=> $nicename,'name' => $name);
