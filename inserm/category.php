@@ -67,7 +67,7 @@ elseif ($nicename == "outils-gestion" or $parentName == "outils-gestion") {
 	$context['autres'] = Timber::get_posts(['category_name' => 'autres-outils']);
 	Timber::render('outils.twig', $context);
 }
-elseif ($nicename == "ressources") {
+elseif ($nicename == "ressources" or $nicename == "aide") {
 	Timber::render('ressources.twig', $context);
 }
 elseif ($nicename == "actus") {
@@ -76,4 +76,3 @@ elseif ($nicename == "actus") {
 else {
     Timber::render('category.twig', $context);
 }
-//print_r($context['biblio']);

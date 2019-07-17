@@ -717,6 +717,9 @@ header .bandeau {
 #presentationText {
     width: calc(100% - 160px);
 }
+#presContact {
+    margin-top: 50px;
+}
 /*****************************/
 /* Page présentation *********/
 /*****************************/
@@ -1181,6 +1184,9 @@ ol li::before {
 }
 .active {
     color: #e64415!important;
+}
+.decalageFooter {
+    height: 50px;
 }
 /*****************************/
 /* Footer ********************/
