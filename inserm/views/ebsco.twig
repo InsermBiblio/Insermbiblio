@@ -112,7 +112,10 @@
                     <input name="custid" value="ns253354" type="hidden">
                     <input name="groupid" value="main" type="hidden">
                     <input name="bquery" value=""  type="hidden">
-                    <input id="searchboxholdingsid" name="uquery" size="55" placeholder="Entrez un titre de revue…" type="text" autocomplete="off" onkeyup="autocomp(event)">&nbsp;
+                    <div class="searchInputResetRev">
+                        <input id="searchboxholdingsid" name="uquery" size="55" placeholder="Entrez un titre de revue…" type="text" autocomplete="off" onkeyup="autocomp(event)">
+                        <button type="button" id="SearchTerm3-clear" onclick="patrickClearRev(this)" title="Effacez" tabindex="0" aria-hidden="false" aria-describedby="descClearButton" class="clear-button" data-auto="text_clear_button" >x</button>
+                    </div>
                     <input value="Rechercher" class="formeds3" type="submit">
                     <span id="DT1_FT" style="display:none">
                     </span>

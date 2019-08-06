@@ -52,13 +52,13 @@ foreach ($useLinks as $link) {
 }
 
 $parentOpenID = get_cat_ID('litterature en acces libre');
-$openAccess = get_categories( array('child_of' => $parentOpenID, 'orderby' => 'term_id', 'order' => 'ASC', 'exclude' => '23') );
+$openAccess = get_categories( array('child_of' => $parentOpenID, 'orderby' => 'name', 'order' => 'ASC', 'exclude' => '23') );
 foreach ($openAccess as $link) {
 	$links=(array)$link;
 	$context['openAccess'][] = [
 		'title' => $links['name'],
 		'nbcol' => (int)($links['count']/8+1),
-		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'DESC' ])
+		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
 	];
 }
 $parentThematiques = get_cat_ID('sites thematiques');
