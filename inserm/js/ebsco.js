@@ -69,6 +69,11 @@ function philippeClearLine2(myForm) {
 function philippeClearLine3(myForm) {
     $('#searchboxedsid3').val('');
 }
+//patrick ajout
+function patrickClearRev(myForm) {
+    $('#searchboxholdingsid').val('');
+}
+
 //##### Required Variables #####
 //ID of form for submission of terms to search
 var searchformideds = 'searchformedsid';
