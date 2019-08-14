@@ -39,6 +39,7 @@ h1 {
 }
 h2 {
 	color: #3f7e93;
+    font-weight: 400;
 }
 h1 {
     font-size: 2.4rem;
@@ -46,25 +47,33 @@ h1 {
 	font-family: 'Noto Sans', sans-serif;
 }
 h2 {
-	font-size: 2.4rem;
+	font-size: 2.5rem;
 	font-family: 'Noto Sans', sans-serif;
 }
 h3 {
-	font-size: 1.4rem;
+	font-size: 1.35rem;
 	font-family: 'Noto Sans', sans-serif;
 	margin-bottom: 20px;
+    margin-top: 40px;
+    font-weight: 500;
 }
 h4 {
-	font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 1.25rem
 }
 h5 {
-    font-size: 1.3rem;
+    font-weight: 500;
+    font-size: 1.5rem;
     text-transform: uppercase;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 0;
 }
 h6 {
-    font-size: 1.5rem;
-    margin-top: 20px; 
+    font-weight: 500;
+    font-size: 1.35rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 a {
     text-decoration: none;
@@ -660,7 +669,9 @@ header .bandeau {
     margin-top: 10px;
     position: relative;
 }
-
+.dbHome p {
+    margin-bottom: 0;
+}
 .dbHome a {
     display: flex;
     flex-direction: row;
@@ -690,9 +701,6 @@ header .bandeau {
 }
 .dbHome[title] {
     display: none;
-}
-.dbHome .dbText p {
-    margin-bottom: 1rem;
 }
 .dbHomeLogo, .dbHomeDeco {
     max-height: 73px;
@@ -746,11 +754,12 @@ header .bandeau {
     margin-top: 10px;
 }
 #frameTitle {
-    font-size: 1.6rem;
-    color: #056180;
+    font-size: 1.4rem;
+    color: #3f7e93;
     font-weight: 700;
     min-width: 300px;
     padding: 10px;
+    text-transform: uppercase;
 }
 #frameText {
     min-width: 300px;
@@ -1076,38 +1085,34 @@ header .bandeau {
 }
 #textPublications ul, #textRessources ul, #textOutils ul, #presentationText ul {
     list-style-type: none;
-    padding-left: 12px;
 }
 .textPage > ul, #pageText > ul, #textOutils > ul, #textRessources > ul, #presentationText > ul {
     list-style-image: url(images/squareblue.png);
 }
-.textPage ul li, #textOutils ul li, #textRessources ul li, #presentationText ul li {
+.textPage > ul > li, #textOutils > ul > li, #textRessources > ul > li, #presentationText > ul > li {
     list-style-position: inside; 
-    text-indent: -12px;
+    text-indent: -14px;
     margin-bottom: 20px;
+    padding-left: 12px;
+}
+.textPage > ul > li > p, #textOutils > ul > li > p, #textRessources > ul > li> p, #presentationText > ul > li> p {
+    margin-left: 12px;
+    margin-top: 7px;
 }
 .textPage > ul > li > ul {
     list-style: none;
     margin-top: 18px;
     padding-left: 50px!important;
 }
-.textPage > ul > li > ul > li:before, #frameText > ul > li > ul > li:before {
-    content: "-";
-    padding-right: 4px;
-    color: #3f7e93;
-}
-.textPage > ul > li > ul > li > ul {
-    list-style: none;
-    margin-top: 18px;    
-    margin-bottom: 20px;
-}
-.textPage > ul > li > ul > li > ul > li {
+.textPage > ul > li > ul > li  {
+    list-style-position: inside;
     margin-bottom: 7px;
+    padding-left: 28px;
+    text-indent: -24px;
 }
-.textPage > ul > li > ul > li > ul > li:before {
-    text-indent: 50px;
-    content: "–";   
-    padding-right: 5px;
+.textPage > ul > li > ul > li:before, #frameText > ul > li > ul > li:before {
+    content: "\002014";
+    padding-right: 8px;
     color: #3f7e93;
 }
 #textPublications a {
@@ -1149,16 +1154,21 @@ ol li::before {
 .liensPublication ul {
     margin-inline-start: 15px;
     margin-bottom: 10px;    
-    list-style-image: url(images/squareblack.png);
+    list-style-image: url(images/squarebluesmall.png);
     color: #000;
 }
+/*
 .liensPublication h3 {
     margin-bottom: 15px;
 }
 .liensPublication h4 {
 	margin-bottom: 10px;
 	margin-top: 15px;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-weight: normal;
 }
+*/
 .liensPublication a {
     color: #000;
 }
@@ -1309,6 +1319,11 @@ footer {
     }
 }
 @media (max-width: 884px) {
+    .singleActusImg {
+        padding-left: 20px;
+    }
+}
+@media (max-width: 884px) {
     #title {
         margin-left: 5px;
     }
@@ -1324,22 +1339,25 @@ footer {
         display: block;
     }
 }
+@media (max-width: 735px) {
+    #textPublications {
+        width: calc(100% - 160px);
+    }
+    #liensPublications {
+        margin-left: 200px; 
+    }
+}
 @media (max-width: 730px) {
     #pageSites #menuSites {
         margin-right: 0;
         margin-bottom: 10px;
     }
-}
-@media (max-width: 730px) {
     #title {
         margin-left: 5px;
     }
     #titleLinks {
         margin-right: 5px;
     }
-}
-
-@media (max-width: 730px) {
     .center {
         min-width: 580px;
     }
@@ -1359,6 +1377,13 @@ footer {
     }
 }
 @media (max-width: 696px) {
+    #presentationText {
+        width: 100%;
+    }
+    #menuSites {
+        position: relative;
+        top: 0;
+    }
     .showhidden {
         display: none;
     }
@@ -1369,6 +1394,18 @@ footer {
         margin-left: 10px;
     }
 
+}
+@media (max-width: 586px) {
+    #menuOutils {
+        position: relative;
+        top: 0;
+    }
+    #textPublications {
+        width: 100%;
+    }
+    #liensPublications {
+        margin-left: 50px;
+    }
 }
 @media (max-width: 620px) {
     .site-pusher, .site-container {

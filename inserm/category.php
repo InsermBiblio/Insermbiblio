@@ -13,11 +13,11 @@ foreach ($useLinks as $link) {
 		'posts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'name', 'order' => 'ASC' ])
 	];
 }
-
-$category = get_the_category();
-$nicename = $category[0]->category_nicename;
-$name = $category[0]->name;
-$parent = $category[0]->parent;
+// traitement sites thematiques
+$category = get_queried_object();
+$nicename = $category->slug;
+$name = $category->name;
+$parent = $category->parent;
 $parentName = get_category($parent)->category_nicename;
 $parentThematiques = get_cat_ID('sites thematiques');
 $parentOmics = get_cat_ID('omics');
@@ -33,7 +33,7 @@ if ($parent == $parentThematiques or $parent == $parentOmics) {
 		if ($links['parent'] == $parentThematiques) {
 			$context['sitesThematiques'][] = [
 				'title' => $links['name'],
-				'slug' => $links['slug']
+				'slug' => $links['slug'],
 			];
 		}
 		elseif ($links['parent'] == $parentOmics) {
@@ -43,6 +43,8 @@ if ($parent == $parentThematiques or $parent == $parentOmics) {
 			];
 		}
 	}
+	$context['themes']=Timber::get_posts(['category_name' => $nicename, 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+
     Timber::render('sites-thematiques.twig', $context);
 }
 elseif ($parent == $parentPublications or $nicename == "publications" ) {
@@ -54,12 +56,12 @@ elseif ($parent == $parentPublications or $nicename == "publications" ) {
 				'title' => $links['name'],
 				'slug' => $links['slug'],
 				'parent' => $links['parent'],
-				'sousposts' => Timber::get_posts([ 'category_name' => $links['slug'] ])
+				'sousposts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'title', 'order' => 'ASC'])
 			];
 			$exclusion[] = $links['cat_ID'];
 		}
 	}
-	$context['publications'] = Timber::get_posts([ 'category_name' => 'publications', 'category__not_in' => $exclusion ]);
+	$context['publications'] = Timber::get_posts([ 'category_name' => 'publications', 'category__not_in' => $exclusion, 'orderby' => 'title', 'order' => 'ASC']);
 	Timber::render('publications.twig', $context);
 }
 elseif ($nicename == "outils-gestion" or $parentName == "outils-gestion") {
@@ -68,6 +70,7 @@ elseif ($nicename == "outils-gestion" or $parentName == "outils-gestion") {
 	Timber::render('outils.twig', $context);
 }
 elseif ($nicename == "ressources" or $nicename == "aide") {
+	$context['ressources'] = Timber::get_posts([ 'category_name' => 'ressources',  'orderby' => 'title', 'order' => 'ASC']);
 	Timber::render('ressources.twig', $context);
 }
 elseif ($nicename == "actus") {
