@@ -19,7 +19,7 @@
                 <ul id="menuSites">
                     {% for item in sitesThematiques %}
                         {% if item.slug == 'omics' %}
-                            {% if item.title == category.name %}
+                            {% if category.nicename == 'omics' %}
                                 <li class="childCat">
                                     <a href="{{site.url}}/category/{{item.slug}}" class="active">{{item.title}}</a>
                                 </li>
@@ -53,11 +53,14 @@
                     {% endfor %}                    
                 </ul>
                 <div id="columnSite">
-                {% for post in posts|sort %}
-                {% if post.title != 'omics' %}
+                {% for post in themes %}
                     <div class="siteThematique">
-                        <div class="siteHeader">                                              
+                        <div class="siteHeader">
+                            {% if TimberImage(post.logo).src %}              
                                 <img src="{{ TimberImage(post.logo).src }}" alt="" class="siteLogo">
+                                {% else %}
+                                <div class="siteLogo"></div>
+                                {% endif %}
                             <h2>
                                 <a href="{{post.url}}" target="_blank">{{post.title}}</a>
                             </h2>
@@ -67,7 +70,6 @@
                             {{post.post_content}}
                         </div>
                     </div>
-                {% endif %}
                 {% endfor %}
                 </div>
             </div>

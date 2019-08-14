@@ -18,13 +18,13 @@
             <div id="pageOutils">
                 <div id="menuOutils">
                     <ul class="menuOutil">
-                    {% for post in posts %}
+                    {% for post in ressources %}
                         <li class="titreOutils outilsBib" id="titre-{{post.id}}">{{post.title}}</li>
                     {% endfor %}
                     </ul>
                 </div>
                 <div id="textRessources">
-                {% for post in posts %}
+                {% for post in ressources %}
                     <div id="text-{{post.id}}" class="noshow textPage">
                         <h2>{{post.title}}</h2>
                         {{post.content}}
