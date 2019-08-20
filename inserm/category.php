@@ -70,7 +70,7 @@ elseif ($nicename == "outils-gestion" or $parentName == "outils-gestion") {
 	Timber::render('outils.twig', $context);
 }
 elseif ($nicename == "ressources" or $nicename == "aide") {
-	$context['ressources'] = Timber::get_posts([ 'category_name' => 'ressources',  'orderby' => 'title', 'order' => 'ASC']);
+	$context['ressources'] = Timber::get_posts([ 'category_name' => $nicename,  'orderby' => 'title', 'order' => 'ASC']);
 	Timber::render('ressources.twig', $context);
 }
 elseif ($nicename == "actus") {
