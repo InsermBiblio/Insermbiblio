@@ -72,6 +72,7 @@ h5 {
 h6 {
     font-weight: 500;
     font-size: 1.35rem;
+    text-transform: uppercase;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -561,7 +562,9 @@ header .bandeau {
 }
 .title img {
     margin-left: 30px;
-    vertical-align: bottom;
+    vertical-align: top;
+    line-height: 33px;
+    padding-top: 7px;
 }
 .center .title::before {
     content: url(images/cadena_ferme.png);
@@ -1111,7 +1114,7 @@ header .bandeau {
     text-indent: -24px;
 }
 .textPage > ul > li > ul > li:before, #frameText > ul > li > ul > li:before {
-    content: "\002014";
+    content: "\002013";
     padding-right: 8px;
     color: #3f7e93;
 }
