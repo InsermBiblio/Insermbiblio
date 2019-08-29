@@ -205,14 +205,14 @@ input, select, .searchInputReset {
     cursor: pointer;
     position: absolute;
     z-index: 1500;
-    left: 80px;
+    left: 100px;
     background-color: #fff;
 }
 #auto-results {
     width: 200px;
     border: 1px solid #cccccc;                    
     padding: 20px;
-    top: -50px;
+    top: 5px;
     cursor: pointer;
     position: absolute;
     z-index: 1500;
@@ -226,6 +226,12 @@ input, select, .searchInputReset {
 #auto-results_eds li:hover {
     color: #66a8be;
 }
+#auto-results li {
+    font-size: 1.3rem;
+    list-style-type: none;
+    padding-bottom: 5px;
+}
+
 .slide {
   overflow:visible;  
 }
