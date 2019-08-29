@@ -56,7 +56,7 @@ elseif ($parent == $parentPublications or $nicename == "publications" ) {
 				'title' => $links['name'],
 				'slug' => $links['slug'],
 				'parent' => $links['parent'],
-				'sousposts' => Timber::get_posts([ 'category_name' => $links['slug'], 'orderby' => 'title', 'order' => 'ASC'])
+				'sousposts' => Timber::get_posts([ 'category_name' => $links['slug'] ])
 			];
 			$exclusion[] = $links['cat_ID'];
 		}
