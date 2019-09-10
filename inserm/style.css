@@ -36,17 +36,13 @@ body {
 }
 h1 {
     color: #056180;
-}
-h2 {
-	color: #3f7e93;
-    font-weight: 400;
-}
-h1 {
     font-size: 2.4rem;
     margin-bottom: 40px;
 	font-family: 'Noto Sans', sans-serif;
 }
 h2 {
+	color: #3f7e93;
+    font-weight: 400;
 	font-size: 2.6rem;
 	font-family: 'Noto Sans', sans-serif;
 }
@@ -244,6 +240,9 @@ header .bandeau {
     flex-direction: column;
     padding: 0 10px 0 20px;
     width: 400px;
+}
+.actusText h2 {
+    font-size: 2.2rem;
 }
 .moreActus {
     margin-top: auto;
@@ -495,7 +494,7 @@ header .bandeau {
     padding: 5px;
     position: absolute;
     right: 5px;
-    bottom: -15px;
+    bottom: -10px;
     content: url(images/chevron-right-regular.svg);
     vertical-align: bottom;
 }
@@ -1103,7 +1102,7 @@ header .bandeau {
     list-style-position: inside; 
     text-indent: -14px;
     margin-bottom: 20px;
-    padding-left: 12px;
+    padding-left: 14px;
 }
 .textPage > ul > li > p,
  #textOutils > ul > li > p,
@@ -1117,14 +1116,15 @@ header .bandeau {
  #presentationText > ul > li> ul {
     list-style: none;
     margin-top: 18px;
-    padding-left: 38px!important;
+   /* padding-left: 38px!important;*/
 }
 .textPage > ul > li > ul > li,
  #textRessources > ul > li > ul > li, 
  #presentationText > ul > li> ul > li  {
     list-style-position: inside;
     margin-bottom: 7px;
-    padding-left: 28px;
+    /*padding-left: 28px;*/
+    padding-left: 17px;
     text-indent: -16px;
 }
 .textPage > ul > li > ul > li:before,
