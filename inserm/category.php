@@ -77,7 +77,12 @@ elseif ($nicename == "aide") {
 	Timber::render('aide.twig', $context);
 }
 elseif ($nicename == "actus") {
-	Timber::render('actus.twig', $context);
+	if ( $_GET["show"] == "archives") {
+		Timber::render('actus-archives.twig', $context);
+	}
+	else {
+		Timber::render('actus.twig', $context);
+	}
 }
 else {
     Timber::render('category.twig', $context);

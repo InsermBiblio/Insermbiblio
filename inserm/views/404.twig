@@ -1,16 +1,19 @@
-{% extends 'category.twig' %}
+{% extends 'page-layout.twig' %}
 {% block breadcrumb %}
     <div id="breadcrumbs">
         <a href="{{site.url}}"> {{ __('Home', 'generique')}}</a> > 404
     </div>
 {% endblock %}
 {% block content %}
-    <div id="pagecontent">
-        <div id="pagecontent">
-            <div id="pagetext">
-                <div id="singlepresent" class="bsbb">
-                    <h1>404 - {{__( 'Not found', 'generique')}}</h1>
-                </div>
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pagetext">
+            <div id="singlepresent" class="bsbb">
+                <h1>404 - Votre page n'a pu être trouvée</h1>
             </div>
         </div>
     </div>

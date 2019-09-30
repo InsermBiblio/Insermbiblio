@@ -1,0 +1,33 @@
+{% extends 'page-layout.twig' %}
+{% block title %}
+    {{parent()}} - {{category.name}}
+{% endblock %}
+{% block content %}
+    <div id="pageContent">
+        <div id="breadcrumb">
+            <a href="{{site.url}}">
+                <img src="{{theme.uri}}/images/home.png" alt="home decoration">
+            </a>
+        </div>
+        <div id="pageActus">
+            <h1>{{category.name}} / Archives</h1>
+            {% set foo = now|date('Y') %}
+            {% for i in foo..2019 %}
+                <h2>{{i}}</h2>
+                <ul id="actusYear">
+                    {% for post in posts %}
+                    {% if post.date('Y') == i %}
+                    <li>
+                        <a href="{{site.url}}/{{post.slug}}" target="_blank">{{post.title}}</a>
+                        <div class="dateArchive"> - {{post.date}}</div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+            <div class="retour">
+                <a href="{{site.url}}/category/actus">Vers les actus récentes</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
