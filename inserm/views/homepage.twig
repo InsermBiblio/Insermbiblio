@@ -13,7 +13,12 @@
 {% endblock %}
 {% block content %}
 {% for warning in alerte %}
-    <div class="alerte">{{warning.title}}<br/>{{warning.content}}</div>
+    <div class="alerte">
+        {% if warning.title %}
+            {{warning.title}}<br/>
+        {% endif %}
+        {{warning.content}}
+    </div>
 {% endfor %}
 <div id="homeContent">
         <div class="leftBoxTop">
@@ -97,7 +102,7 @@
                 {% for post in news %}
                     <li>
                         <img src="{{theme.uri}}/images/squareblue.png" alt="" class="squareBlue">
-                        <a href="{{site.url}}/{{post.slug}}">{{post.post_title}} <span class="italic">({{post.post_date|date("d-m-Y")}})</span></a>
+                        <a href="{{site.url}}/{{post.slug}}">{{post.post_title}}</a>
                     </li>
                 {% endfor %}
                 <span class="fleche">

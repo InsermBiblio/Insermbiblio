@@ -12,18 +12,29 @@
         <div id="pageActus">
             <h1>{{category.name}}</h1>
             <div id="actusFlex">
-            {% for post in posts %}
-                <div id="actus">
-                    <div class="actusImg">
-                        <img src="{{post.thumbnail.src}}" alt="décoration actu">
-                    </div>
-                    <div class="actusText">
-                        <h2>{{post.title}}</h2>
-                        <div class="date">{{post.date}}</div>
-                        <span class="moreActus"><a href="{{site.url}}/{{post.slug}}"></a></span>                        
-                    </div>
+                <div id="grpNext-1" class="actusNextGroup">
+                {% for post in posts %}
+                    {% if loop.index < 11 %}
+                        <div class="actus">
+                            <div class="actusImg">
+                                <img src="{{post.thumbnail.src}}" alt="décoration actu">
+                            </div>
+                            <div class="actusText">
+                                <h2>{{post.title}}</h2>
+                                <div class="date">{{post.date}}</div>
+                                <span class="moreActus"><a href="{{site.url}}/{{post.slug}}"></a></span>                        
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
                 </div>
-            {% endfor %}
+                {% if posts|length > 10 %}
+                    <a href="/category/actus?show=archives">
+                        <div id="nextAction">
+                            Toutes les archives
+                        </div>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

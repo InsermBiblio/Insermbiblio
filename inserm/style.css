@@ -210,13 +210,11 @@ header .bandeau {
 #pageActus h1 {
     margin-bottom: 20px;
 }
-#actusFlex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+#actusYear {
+    list-style-type: none;
+    padding-left: 60px;
 }
-#actus {
+.actus {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -233,7 +231,7 @@ header .bandeau {
 .actusImg img {
     width: 147px;
     height: 96px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .actusText {
     display: flex;
@@ -265,7 +263,7 @@ header .bandeau {
 }
 .singleActusText {
     width: calc(100% - 260px);
-    min-width: 500px;
+    min-width: 300px;
     padding-left: 20px;
 }
 .singleActusText {
@@ -281,6 +279,59 @@ header .bandeau {
     height: 170px;
     object-fit: cover;    
 }
+.retour {
+    text-align: right;
+    position: relative;
+    padding-right: 20px;
+}
+.retour a {
+    color: #e64415;
+    vertical-align: text-top;
+    line-height: 30px;
+}
+.retour a:after {
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    content: url(images/chevron-right-small.svg);
+}
+.retour a:active:after, .retour a:hover:after{
+    content: url(images/chevron-right-dark.svg);
+}
+.actusNextGroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+#nextAction {
+    width: 100%;
+    height: 60px;
+    font-weight: 700;
+    border: 2px solid #3f7e93;
+    line-height: 60px;
+    text-align: center;
+    align-self: center;
+    margin-top: 50px;
+    margin-bottom:50px;
+    color: #3f7e93;
+    cursor: pointer;
+}
+#actusFlex a:hover {
+    text-decoration: none;
+}
+#actusFlex a:hover #nextAction{
+    color: #e64415;
+    border-color: #e64415;
+}
+.dateArchive {
+    display: inline-block;
+    font-family: "Source Sans Pro";
+    font-style: italic;
+    font-size: 1.6rem;
+    color: #7a7a7a;
+}
+
 /*****************************/
 /* Formulaires ***************/
 /*****************************/
@@ -436,6 +487,7 @@ header .bandeau {
     grid-area: a;
     position: relative;
     border: 1px solid #cccccc;
+    position: relative;
 }
 .centerRight {
     grid-area: oa;
@@ -447,8 +499,6 @@ header .bandeau {
 .leftBox {
     list-style: none;
     padding: 5px 10px 10px 10px;
-    position: relative;
-	
 }
 .leftBox li {
 	color: #3f7e93;
@@ -460,7 +510,7 @@ header .bandeau {
 	font-family: 'Asap', sans-serif;
 	font-weight: 400;
 }
-.leftBoxTop li, .leftBoxTop a,.leftBoxBottom a {
+.leftBoxTop li, .leftBoxTop a, .leftBoxBottom li, .leftBoxBottom a {
     font-size: 1.2rem;
     color: #333333;
 }
@@ -489,14 +539,7 @@ header .bandeau {
     bottom: 5px;
 	content: url(images/chevron-right-small.svg);
     vertical-align: bottom;
-}
-.leftBoxBottom .fleche a:before {
-    padding: 5px;
-    position: absolute;
-    right: 5px;
-    bottom: -10px;
-    content: url(images/chevron-right-regular.svg);
-    vertical-align: bottom;
+    z-index: 1000;
 }
 .fleche a:active:before, .fleche a:hover:before {
     content: url(images/chevron-right-dark.svg);
@@ -664,25 +707,27 @@ header .bandeau {
 .linksborder:not(:last-child) {
     border-right: 1px solid #cccccc;
 }
-.dbHome {
+.dbHome, .dbBase {
     width: 230px;
     height: 75px;
     border: 1px solid #cccccc;
     margin-top: 10px;
     position: relative;
 }
-.dbHome p {
+.dbHome p, .dbBase p {
     margin-bottom: 0;
 }
-.dbHome a {
+.dbHome a, .dbBase a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
-	font-family: 'Open sans', sans-serif;
-	font-size: 1.15rem;
+	font-size: 1.3rem;
 }
-.dbHome .dbTitle {
-    padding: 5px;
+.dbHome a {
+    font-size: 1.4rem;
+}
+.dbHome .dbTitle, .dbBase .dbTitle {
+    padding: 2px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -690,18 +735,18 @@ header .bandeau {
     align-self: center;
     flex-grow: 1;
 }
-.dbHome .dbTitle img {
+.dbHome .dbTitle img, .dbBase .dbTitle img {
     max-width: 140px;
     max-height: 30px;
     height: auto;
     align-self: center;
 }
-.dbHome .dbName {
-    padding: 5px 0 10px 0;
+.dbHome .dbName, .dbBase .dbName {
+    padding: 10px 0 10px 0;
     color: #056180;
-    font-weight: 600;
+    font-weight: 700;
 }
-.dbHome[title] {
+.dbHome[title], .dbBase[title] {
     display: none;
 }
 .dbHomeLogo, .dbHomeDeco {
@@ -1339,11 +1384,6 @@ footer {
     }
 }
 @media (max-width: 884px) {
-    .singleActusImg {
-        padding-left: 20px;
-    }
-}
-@media (max-width: 884px) {
     #title {
         margin-left: 5px;
     }
@@ -1414,6 +1454,18 @@ footer {
         margin-left: 10px;
     }
 
+}
+@media (max-width: 686px) {
+    .singleActus {
+        justify-content: space-around;
+    }
+    .singleActusImg {
+        margin-bottom: 20px;
+    }
+    .singleActusText {
+        padding-left: 0;
+        width: 100%;
+    }
 }
 @media (max-width: 586px) {
     #menuOutils {
