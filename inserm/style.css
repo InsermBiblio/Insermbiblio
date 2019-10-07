@@ -284,7 +284,12 @@ header .bandeau {
     position: relative;
     padding-right: 20px;
 }
-.retour a {
+.retourLeft {
+    text-align: left;
+    position:relative;
+    margin-top: 20px;
+}
+.retour a, .retourLeft a {
     color: #e64415;
     vertical-align: text-top;
     line-height: 30px;
@@ -292,9 +297,19 @@ header .bandeau {
 .retour a:after {
     position: absolute;
     right: 0px;
+    top: 4px;
+    content: url(images/chevron-right-small.svg);
+}
+.retourLeft a:after {
+    position: absolute;
+    left: 165px;
     top: 3px;
     content: url(images/chevron-right-small.svg);
 }
+.retourLeft a:active:after, .retourLeft a:hover:after{
+    content: url(images/chevron-right-dark.svg);
+}
+
 .retour a:active:after, .retour a:hover:after{
     content: url(images/chevron-right-dark.svg);
 }
@@ -721,10 +736,10 @@ header .bandeau {
     display: flex;
     flex-direction: row;
     text-decoration: none;
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 }
-.dbHome a {
-    font-size: 1.4rem;
+.dbHome a .dbText, .dbBase a .dbText {
+    font-size: 1.15rem;
 }
 .dbHome .dbTitle, .dbBase .dbTitle {
     padding: 2px;
@@ -744,7 +759,6 @@ header .bandeau {
 .dbHome .dbName, .dbBase .dbName {
     padding: 10px 0 10px 0;
     color: #056180;
-    font-weight: 700;
 }
 .dbHome[title], .dbBase[title] {
     display: none;
@@ -869,7 +883,7 @@ header .bandeau {
     line-height: 16px;
 
 }
-.dbHome:hover .dbText {
+.dbHome:hover .dbText, .dbBase:hover .dbText {
     top: 80px;
     left:20px;
     opacity:1;

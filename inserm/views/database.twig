@@ -11,7 +11,7 @@
         </div>
         <div id="dbRender">
             {% for base in basesThematiques.posts %}
-                <div class="dbHome">
+                <div class="dbBase">
                     <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank" >
                         <div class="visuel">
                             <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >                           
@@ -23,7 +23,7 @@
                             </div>
                             <div class="dbText">
                                 {{base.content}}
-                            </div>                                                      
+                            </div>                                                
                         </div>
                     </a>                    
                 </div>
@@ -34,13 +34,13 @@
         </div>
         <div id="dbRender">
             {% for base in ebooksWiley.posts %}
-                <div class="dbHome">
+                <div class="dbBase">
                     <a href="{{ezproxy.inist}}{{base.url_bases_de_donnees}}" target="_blank">
                         <div class="visuel">                         
                             <img src="{{ TimberImage(base.visuel_bases_de_donnees).src }}" class="dbHomeDeco" >
                         </div>
                         <div class="dbTitle">
-                            <img src="{{base.thumbnail.src}}" class="dbPageLogo">                            
+                            <img src="{{base.thumbnail.src}}" class="dbPageLogo">
                             <div class="dbName">
                                 {{base.title}}
                             </div>                            
