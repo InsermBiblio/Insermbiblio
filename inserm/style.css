@@ -277,7 +277,7 @@ header .bandeau {
 .singleActusImg img {
     width: 260px;
     height: 170px;
-    object-fit: cover;    
+    object-fit: contain;    
 }
 .retour {
     text-align: right;
