@@ -428,6 +428,7 @@ header .bandeau {
     border: 1px solid red;
     font-weight: bold;
     font-size: 1.6rem;
+    padding: 5px;
 }
 .alerte p {
     margin: 0;

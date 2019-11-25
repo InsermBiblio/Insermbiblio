@@ -14,7 +14,7 @@
             <div id="actusFlex">
                 <div id="grpNext-1" class="actusNextGroup">
                 {% for post in posts %}
-                    {% if loop.index < 11 %}
+                    {% if loop.index < 21 %}
                         <div class="actus">
                             <div class="actusImg">
                                 <img src="{{post.thumbnail.src}}" alt="décoration actu">
@@ -28,7 +28,7 @@
                     {% endif %}
                 {% endfor %}
                 </div>
-                {% if posts|length > 10 %}
+                {% if posts|length > 20 %}
                     <a href="/category/actus?show=archives">
                         <div id="nextAction">
                             Toutes les archives
