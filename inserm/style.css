@@ -418,15 +418,11 @@ header .bandeau {
 .alerte {
     width: 100%;
     background-color: #fff;
-    color: red;
-    border-radius: 5px;
     min-height: 40px;
     text-align: center;
     margin: 5px auto;
     line-height: 30px;
     vertical-align: middle;
-    border: 1px solid red;
-    font-weight: bold;
     font-size: 1.6rem;
     padding: 5px;
 }
