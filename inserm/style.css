@@ -418,11 +418,15 @@ header .bandeau {
 .alerte {
     width: 100%;
     background-color: #fff;
+    color: red;
+    border-radius: 5px;
     min-height: 40px;
     text-align: center;
     margin: 5px auto;
     line-height: 30px;
     vertical-align: middle;
+    border: 1px solid red;
+    font-weight: bold;
     font-size: 1.6rem;
     padding: 5px;
 }
@@ -525,6 +529,10 @@ header .bandeau {
 .leftBoxTop li, .leftBoxTop a, .leftBoxBottom li, .leftBoxBottom a {
     font-size: 1.2rem;
     color: #333333;
+}
+.logoMetanews {
+	max-width: 140px;
+	margin-left: 10px;
 }
 .portailTitle a {
     font-size: 1.5rem;
